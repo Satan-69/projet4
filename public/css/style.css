@@ -1,0 +1,29 @@
+body
+{
+    width: 100%;
+    margin: auto;
+    background-color:black;
+    padding-top: 60px;
+}
+
+h1, h2, h3, h4, p, a, .nav-link
+{
+    color: white;
+}
+
+#navbarSupportedContent
+{
+    width: 60%;
+    text-align: center;
+    color: white;
+}
+
+.nav-link:hover
+{
+    color: white;
+    text-decoration: underline;
+}
+.active
+{
+    text-decoration: underline;
+}
