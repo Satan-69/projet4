@@ -80,7 +80,7 @@ try {
 //     {
 //         getArticles();
 //     }
-// }
+}
 catch(Exception $e) 
 {
     echo 'Erreur : ' . $e->getMessage();
