@@ -30,9 +30,10 @@
             <li class="nav-item ml-lg-5">
                 <a class="nav-link" href="#">Contact</a>
             </li>
+            <li class="nav-item ml-lg-5">
+            <a class="btn btn-secondary" href="register.php">Inscrivez-vous !</a>
+            </li>
         </ul>
     </div>
 </nav>
 </div>
-
-<h1>Bienvenue sur le blog de Jean Forteroche</h1>
