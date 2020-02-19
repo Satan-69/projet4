@@ -1,24 +1,26 @@
 <?php
 session_start();
-require('controller/frontend.php');
-require('controller/backend.php');
+require('controller/frontend/frontend.php');
+// require('controller/backend/backend.php');
 
 try {
     // Si on demande la page d'accueil
     if (isset($_GET['accueil.php']))
     {
-
+        $controller = new Frontend;
+        $controller->getAccueil();
     }
 //     // Si on demande la page biographie
 //     if (isset($_GET['biographie.php']))
 //     {
 
 //     }
-//     // Si on demande la page d'articles
-//     if (isset($_GET['articles.php']))
-//     {
-
-//     }
+    // Si on demande la page d'articles
+    if (isset($_GET['articles.php']))
+    {
+        $controller = new Frontend;
+        $controller->getArticles();
+    }
 //     // Si on demande la page de contact
 //     if (isset($_GET['contact.php']))
 //     {
@@ -75,11 +77,12 @@ try {
 //             }
 //         }
 //     }
-//     // Par défaut, on charge la page d'accueil
-//     else
-//     {
-//         getArticles();
-//     }
+    // Par défaut, on charge la page d'accueil
+    else
+    {
+        $frontend = new Frontend;
+        $frontend->getAccueil();
+    }
 }
 catch(Exception $e) 
 {

@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Accueil</a>
+                <a class="nav-link" href="accueil.php">Accueil</a>
             </li>
             <li class="nav-item dropdown ml-lg-5">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -17,7 +17,7 @@
                     Les Chapitres
                 </a>
                 <div class="dropdown-menu ml-lg-5" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Tous les chapitres</a>
+                    <a class="dropdown-item" href="articles.php">Tous les chapitres</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Chapitre 1</a>
                     <a class="dropdown-item" href="#">Chapitre 2</a>
