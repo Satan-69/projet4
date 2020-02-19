@@ -4,41 +4,41 @@ require('controller/frontend/frontend.php');
 // require('controller/backend/backend.php');
 
 try {
+    $controller = new Frontend;
+    
     // Si on demande la page d'accueil
-    if (isset($_GET['accueil.php']))
+    if (in_array('accueil.php', $controller->url))
     {
-        $controller = new Frontend;
-        $controller->getAccueil();
+        $controller->accueil();
     }
-//     // Si on demande la page biographie
-//     if (isset($_GET['biographie.php']))
-//     {
-
-//     }
     // Si on demande la page d'articles
-    if (isset($_GET['articles.php']))
+    else if (in_array('articles.php', $controller->url))
     {
-        $controller = new Frontend;
-        $controller->getArticles();
+        $controller->articles();
     }
-//     // Si on demande la page de contact
-//     if (isset($_GET['contact.php']))
-//     {
-
-//     }
+    // Si on demande la page biographie
+    else if (in_array('biographie.php', $controller->url))
+    {
+        $controller->biographie();
+    }
+    // Si on demande la page de contact
+    else if (in_array('contact.php', $controller->url))
+    {
+        $controller->contact();
+    }
 //     // Si on veut se connecter au back-office
-//     if (isset ($_GET['admin.php']))
+//     else if (isset ($_GET['admin.php']))
 //     {
 
 //     }
-//     // Si on veut s'abonner
-//     if (isset ($_GET['subscribe.php']))
-//     {
-
-//     }
+    // Si on veut s'abonner
+    else if (in_array('register.php', $controller->url))
+    {
+        $controller->register();
+    }
 
 //     //Si une action est demandée ->
-//     if (isset($_GET['action']))
+//     else if (isset($_GET['action']))
 //     {   
 //         // Charge les articles
 //         if ($_GET['action'] == 'listArticles')
@@ -80,8 +80,7 @@ try {
     // Par défaut, on charge la page d'accueil
     else
     {
-        $frontend = new Frontend;
-        $frontend->getAccueil();
+        $controller->accueil();
     }
 }
 catch(Exception $e) 

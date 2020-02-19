@@ -19,7 +19,7 @@
     </header>
     
     <main class="text-center">
-        <?php echo $content; ?>
+        <?= $content; ?>
     </main>
     
     <footer> 

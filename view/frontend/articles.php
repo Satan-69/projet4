@@ -1,4 +1,5 @@
-<?php ob_start(); ?>
+<?php $title = 'Les chapitres';
+ob_start(); ?>
 <h2>Le premier chapitre</h2>
 
 <p>Publié le <!-- date -->, par <!--auteur--></p>
