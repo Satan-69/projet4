@@ -9,21 +9,17 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- CSS -->
     <link rel="stylesheet" href="public/css/style.css">
-    <title>Jean Forteroche - <?= $title ?></title>
+    <title>Jean Forteroche - <?=$title?></title>
 </head>
-
 <body>
-    
-    <header> 
-        <?php include 'header.php'; ?> 
+    <header>
+        <?php include 'header.php';?>
     </header>
-    
     <main class="text-center">
-        <?= $content; ?>
+        <?=$content;?>
     </main>
-    
-    <footer> 
-        <?php include 'footer.php'; ?> 
+    <footer>
+        <?php include 'footer.php';?>
     </footer>
     <!-- JS Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

@@ -1,11 +1,12 @@
 <?php
+require_once 'Manager.php';
 
 class ArticleManager extends Manager
 {
     public function getArticles()
     {
-        $db = $this>dbConnect();
-        $req = $db->query('SELECT * FROM articles ORDER BY date_posted DESC');
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, author, title, content, DATE_FORMAT(date_posted, \'%d/%m/%Y, %Hh%i\') AS date_posted FROM articles ORDER BY date_posted ASC');
 
         return $req;
     }
@@ -13,7 +14,13 @@ class ArticleManager extends Manager
     public function getArticle($id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT * FROM articles WHERE id = ?');
+        $req = $db->prepare('SELECT id, author, title, content, date_posted FROM articles WHERE id = ?');
         $req->execute(array([$id]));
+    }
+
+    public function getLastArticle()
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT * FROM articles WHERE');
     }
 }

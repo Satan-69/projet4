@@ -1,15 +1,47 @@
+html, body
+{
+    height: 100%;
+    margin: 0 auto;
+}
 body
 {
-    width: 100%;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
     background-color:black;
-    padding-top: 60px;
+    padding-top: 60px; /* Height of the navbar */
+    padding-bottom: 60px; /* Height of the footer */
+}
+
+footer
+{
+    margin-top: auto;
 }
 
 h1, h2, h3, h4, p, a, .nav-link
 {
     color: white;
 }
+
+hr { 
+    border: 0; 
+    height: 30px; 
+    border-style: solid; 
+    border-color: #fff; 
+    border-width: 1px 0 0 0; 
+    border-radius: 20px; 
+    margin-left: 5%;
+    margin-right: 5%;
+    } 
+hr:before { 
+    display: block; 
+    content: ""; 
+    height: 30px; 
+    margin-top: -31px; 
+    border-style: solid; 
+    border-color: #fff; 
+    border-width: 0 0 1px 0; 
+    border-radius: 20px; 
+    }
 
 #navbarSupportedContent
 {
@@ -26,4 +58,10 @@ h1, h2, h3, h4, p, a, .nav-link
 .active
 {
     text-decoration: underline;
+}
+
+.card
+{
+    width: 25rem;
+    margin: 20px;
 }

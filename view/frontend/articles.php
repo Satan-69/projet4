@@ -1,9 +1,21 @@
 <?php $title = 'Les chapitres';
-ob_start(); ?>
-<h2>Le premier chapitre</h2>
+ob_start();?>
+<h2>Les chapitres</h2>
 
-<p>Publié le <!-- date -->, par <!--auteur--></p>
+<?php
+while ($donnees = $req->fetch())
+{
+?>
+<article class="article">
+<h3><?= $donnees['title'];?></h3>
+<p>Publié le <?= $donnees['date_posted'];?> , par <?= $donnees['author'];?></p>
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto sit, magni error aliquam quaerat beatae repellat? Eos, similique ad voluptates,<br> facilis quis, itaque aliquam laborum dicta corporis accusantium repudiandae ullam?</p>
+<p><?= nl2br(htmlspecialchars($donnees['content']));?></p>
+</article>
+<?php 
+}
+$req->closeCursor();
+?>
+
 <?php $content = ob_get_clean();
-      include 'template.php'?>
+include 'template.php';
