@@ -7,19 +7,35 @@ try {
     $controller = new Frontend;
     if (isset($controller->url)) {
         // Si on demande la page d'accueil
-        if (in_array('accueil.php', $controller->url)) {
+        if (strpos($controller->url,'accueil.php')) 
+        {
             $controller->accueil();
         }
         // Si on demande la page d'articles
-        else if (in_array('articles.php', $controller->url)) {
+        else if (strpos($controller->url, 'articles.php'))
+        {
             $controller->articles();
         }
+        // Charge l'article demandé et ses commentaires
+        else if (strpos($controller->url, 'article.php'))
+        {
+            if (isset($_GET['id']) && $_GET['id'] > 0)
+            {
+                $controller->article();
+            }
+            else
+            {
+                throw new Exception('Aucun ID d\'article envoyé');
+            }
+        }
         // Si on demande la page biographie
-        else if (in_array('biographie.php', $controller->url)) {
+        else if (strpos($controller->url, 'biographie.php')) 
+        {
             $controller->biographie();
         }
         // Si on demande la page de contact
-        else if (in_array('contact.php', $controller->url)) {
+        else if (strpos($controller->url, 'contact.php')) 
+        {
             $controller->contact();
         }
         //     // Si on veut se connecter au back-office
@@ -28,30 +44,10 @@ try {
 
         //     }
         // Si on veut s'abonner
-        else if (in_array('register.php', $controller->url)) {
+        else if (strpos($controller->url, 'register.php')) 
+        {
             $controller->register();
         }
-
-        //     //Si une action est demandée ->
-        //     else if (isset($_GET['action']))
-        //     {
-        //         // Charge les articles
-        //         if ($_GET['action'] == 'listArticles')
-        //         {
-        //             getArticles();
-        //         }
-        //         // Charge l'article demandé
-        //         else if ($_GET['action'] == 'Article')
-        //         {
-        //             if (isset($_GET['id']) AND $_GET['id'] > 0)
-        //             {
-        //                 getArticle();
-        //             }
-        //             else
-        //             {
-        //                 throw new Exception('Aucun ID d\'article envoyé');
-        //             }
-        //         }
         //         // Si l'utilisateur poste un commentaire sur un article
         //         else if ($_GET['action'] == 'addComment')
         //         {
@@ -75,7 +71,7 @@ try {
         // Par défaut, on charge la page d'accueil
         else {
             $controller->accueil();
-        }
+            }
     }
 } catch (Exception $e) {
     echo 'Erreur : ' . $e->getMessage();

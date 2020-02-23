@@ -31,10 +31,11 @@ hr {
     border-radius: 20px; 
     margin-left: 5%;
     margin-right: 5%;
+    margin-top: 40px;
     } 
 hr:before { 
     display: block; 
-    content: ""; 
+    content: "";
     height: 30px; 
     margin-top: -31px; 
     border-style: solid; 

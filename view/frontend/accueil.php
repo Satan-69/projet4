@@ -11,8 +11,15 @@ ob_start();
 </section>
 <hr>
 <section id="last-article">
-<!-- Get the last article published -->
 
+<!-- Get the last article published -->
+<h3>Dernier chapitre</h3>
+  <article class="article">
+<h3><a href="article.php?id=<?= $article['id'] ?>"><?= $article['title'];?></a></h3>
+<p>Publié le <?= $article['date_posted'];?> , par <?= $article['author'];?></p>
+
+<p><?= nl2br(htmlspecialchars($article['content']));?></p>
+</article>
 </section>
 <hr>
 <section id="books">

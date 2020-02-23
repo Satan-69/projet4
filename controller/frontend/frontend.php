@@ -1,6 +1,7 @@
 <?php
 require_once 'model/frontend/Manager.php';
 require_once 'model/frontend/ArticleManager.php';
+require_once 'model/frontend/CommentManager.php';
 
 class Frontend
 {
@@ -13,10 +14,10 @@ class Frontend
 
     public function getUrl()
     {
-        $request = trim($_SERVER['REQUEST_URI'], '/');
+        $request = $_SERVER['REQUEST_URI'];
         if (isset($request) && !empty($request))
         {
-            $this->url = explode('/', $request);
+            $this->url = $request;
         }
         else
         {
@@ -28,7 +29,10 @@ class Frontend
     {
         if (isset($this->url))
         {
-        require 'view/frontend/accueil.php';
+            $articleManager = new ArticleManager;
+            $article = $articleManager->getLastArticle();
+            
+            require 'view/frontend/accueil.php';
         }
     }
 
@@ -36,10 +40,23 @@ class Frontend
     {
         if (isset($this->url))
         {
-        $articleManager = new ArticleManager;
-        $req = $articleManager->getArticles();
-        
-        require 'view/frontend/articles.php';
+            $articleManager = new ArticleManager;
+            $req = $articleManager->getArticles();
+
+            require 'view/frontend/articles.php';
+        }
+    }
+
+    public function article()
+    {
+        if (isset($this->url))
+        {
+            $articleManager = new ArticleManager;
+            $commentManager = new CommentManager;
+            $article = $articleManager->getArticle($_GET['id']);
+            $comments = $commentManager->getComments($_GET['id']);
+
+            require 'view/frontend/article.php';
         }
     }
 
@@ -47,7 +64,7 @@ class Frontend
     {
         if (isset($this->url))
         {
-        require 'view/frontend/biographie.php';
+            require 'view/frontend/biographie.php';
         }
     }
 
@@ -55,7 +72,7 @@ class Frontend
     {
         if (isset($this->url))
         {
-        require 'view/frontend/contact.php';
+            require 'view/frontend/contact.php';
         }
     }
 
@@ -63,7 +80,7 @@ class Frontend
     {
         if (isset($this->url))
         {
-        require 'view/frontend/register.php';
+            require 'view/frontend/register.php';
         }
     }
 }
