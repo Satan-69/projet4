@@ -25,7 +25,7 @@ class Frontend
         }
     }
 
-    public function accueil()
+    public function home()
     {
         if (isset($this->url))
         {
@@ -60,7 +60,7 @@ class Frontend
         }
     }
 
-    public function biographie()
+    public function biography()
     {
         if (isset($this->url))
         {
@@ -83,4 +83,16 @@ class Frontend
             require 'view/frontend/register.php';
         }
     }
+
+    public function addComment($postId, $author, $comment)
+    {
+        $commentManager = new CommentManager;    
+        $affectedLines = $commentManager->postComment($postId, $author, $comment);
+
+        if ($affectedLines === false)
+            throw new Exception('Impossible d\'ajouter le commentaire');
+        else
+            header('Location: article.php?action=post&id=' . $postId);
+    }
 }
+

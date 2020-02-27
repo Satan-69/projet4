@@ -26,8 +26,8 @@ class ArticleManager extends Manager
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT author, title, content, id, DATE_FORMAT(date_posted, \'%d/%m/%Y, %Hh%i\') AS date_posted FROM articles ORDER BY id DESC LIMIT 1');
-        
         $article = $req->fetch();
+
         return $article;
     }
 }

@@ -22,6 +22,11 @@ h1, h2, h3, h4, p, a, .nav-link
     color: white;
 }
 
+p
+{
+    margin: 0 4% 0 4%;
+}
+
 hr { 
     border: 0; 
     height: 30px; 
@@ -63,6 +68,7 @@ hr:before {
 
 .card
 {
-    width: 25rem;
+    width: 80%;
+    max-width: 25rem;
     margin: 20px;
 }

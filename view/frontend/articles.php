@@ -7,10 +7,10 @@ while ($donnees = $req->fetch())
 {
 ?>
 <article class="article">
-<h3><a href="article.php?id=<?= $donnees['id'] ?>"><?= $donnees['title'];?></a></h3>
+<h3 class="m-3"><a href="article.php?id=<?= $donnees['id'] ?>"><?= $donnees['title'];?></a></h3>
 <p>Publié le <?= $donnees['date_posted'];?> , par <?= $donnees['author'];?></p>
 
-<p><?= nl2br(htmlspecialchars($donnees['content']));?></p>
+<p class=" text-center"><?= nl2br(htmlspecialchars($donnees['content']));?></p>
 </article>
 <?php 
 }
