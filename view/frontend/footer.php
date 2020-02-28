@@ -7,6 +7,6 @@
         <p><a href="mentions.php">Mentions légales</a></p>
         <p><a href="plansite.php">Plan du site</a></p>
     </div>
-    
+
     <p class="small text-right mr-5"><a href="admin.php">Admin panel</a></p>
 </footer>

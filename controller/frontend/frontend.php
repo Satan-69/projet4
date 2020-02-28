@@ -2,6 +2,7 @@
 require_once 'model/frontend/Manager.php';
 require_once 'model/frontend/ArticleManager.php';
 require_once 'model/frontend/CommentManager.php';
+require_once 'lib/form.php';
 
 class Frontend
 {
@@ -72,6 +73,7 @@ class Frontend
     {
         if (isset($this->url))
         {
+            $form = new Form;
             require 'view/frontend/contact.php';
         }
     }
@@ -87,9 +89,9 @@ class Frontend
     public function addComment($postId, $author, $comment)
     {
         $commentManager = new CommentManager;    
-        $affectedLines = $commentManager->postComment($postId, $author, $comment);
+        $input = $commentManager->postComment($postId, $author, $comment);
 
-        if ($affectedLines === false)
+        if ($input === false)
             throw new Exception('Impossible d\'ajouter le commentaire');
         else
             header('Location: article.php?action=post&id=' . $postId);

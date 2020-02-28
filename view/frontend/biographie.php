@@ -3,8 +3,9 @@ ob_start();
 ?>
 <h1>Voici ma vie.</h1>
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nihil ducimus mollitia velit itaque distinctio dolore molestiae ratione veritatis placeat eum sed,
-temporibus illo, officia maiores hic qui, repudiandae consequuntur!</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nihil ducimus mollitia velit itaque distinctio dolore
+    molestiae ratione veritatis placeat eum sed,
+    temporibus illo, officia maiores hic qui, repudiandae consequuntur!</p>
 
 
 

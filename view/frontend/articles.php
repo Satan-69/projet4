@@ -3,16 +3,15 @@ ob_start();?>
 <h2>Les chapitres</h2>
 
 <?php
-while ($donnees = $req->fetch())
-{
-?>
+while ($donnees = $req->fetch()) {
+    ?>
 <article class="article">
-<h3 class="m-3"><a href="article.php?id=<?= $donnees['id'] ?>"><?= $donnees['title'];?></a></h3>
-<p>Publié le <?= $donnees['date_posted'];?> , par <?= $donnees['author'];?></p>
+    <h3 class="m-3"><a href="article.php?id=<?=$donnees['id']?>"><?=$donnees['title'];?></a></h3>
+    <p>Publié le <?=$donnees['date_posted'];?> , par <?=$donnees['author'];?></p>
 
-<p class=" text-center"><?= nl2br(htmlspecialchars($donnees['content']));?></p>
+    <p class=" text-center"><?=nl2br(htmlspecialchars($donnees['content']));?></p>
 </article>
-<?php 
+<?php
 }
 $req->closeCursor();
 ?>

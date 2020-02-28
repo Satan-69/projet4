@@ -1,27 +1,26 @@
 <?php $title = htmlspecialchars($article['title']);
-ob_start(); ?>
+ob_start();?>
 
 <!-- Display de l'article -->
 <article class="article">
-    <h3><?= $article['title'];?></h3>
-    <p>Publié le <?= $article['date_posted'];?> , par <?= $article['author'];?></p>
+    <h3><?=$article['title'];?></h3>
+    <p>Publié le <?=$article['date_posted'];?> , par <?=$article['author'];?></p>
 
-    <p><?= nl2br(htmlspecialchars($article['content']));?></p>
+    <p><?=nl2br(htmlspecialchars($article['content']));?></p>
 </article>
 <hr>
 <!-- Display des commentaires -->
 <section id="comments">
-<?php 
-while ($comment = $comments->fetch())
-{ ?>
-<p><strong><?= htmlspecialchars($comment['author']) ?></strong>, le <?=$comment['date_posted']?> : </p>
-<p><?=nl2br(htmlspecialchars($comment['comment'])) ?></p>
-<?php
+    <?php
+while ($comment = $comments->fetch()) {?>
+    <p><strong><?=htmlspecialchars($comment['author'])?></strong>, le <?=$comment['date_posted']?> : </p>
+    <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>
+    <?php
 }
 ?>
 </section>
 <section id="postComment" class="mt-4">
-    <form  method="post" action="article.php?action=addComment&amp;id=<?= $article['id'] ?>">
+    <form method="post" action="article.php?action=addComment&amp;id=<?=$article['id']?>">
         <p>
             <label for="author">Auteur : </label><br>
             <input type="text" name="author" id="author"><br>
@@ -33,5 +32,5 @@ while ($comment = $comments->fetch())
 </section>
 <?php
 $content = ob_get_clean();
-include 'template.php';
+require 'template.php';
 ?>
