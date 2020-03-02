@@ -94,7 +94,7 @@ class Frontend
         if ($input === false)
             throw new Exception('Impossible d\'ajouter le commentaire');
         else
-            header('Location: article.php?action=post&id=' . $postId);
+            header('Location: article.php?id='.$postId);
     }
 }
 

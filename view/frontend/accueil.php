@@ -2,7 +2,7 @@
 ob_start();
 ?>
 <section id="presentation" class="m-3">
-    <h1>Jean Forteroche - Le Blog.</h1>
+    <h1>Billet simple pour l'Alaska - Jean Forteroche.</h1>
 
     <h2> Bienvenue !</h2>
 
@@ -58,4 +58,3 @@ ob_start();
 
 <?php $content = ob_get_clean();
 require 'template.php';
-?>
