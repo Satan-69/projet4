@@ -8,6 +8,8 @@ ob_start();
         <br>
         <p class="lead">Adepte des nouvelles technologies, je vous propose un nouveau concept : celui de publier mon livre chapitre
         par chapitre, directement en ligne. Un peu comme une série en fait !</p>
+        <p>
+        <a class="lead" href="article.php?id=1"> Rendez-vous ici pour commencer l'histoire...</a></p>
         </div>
 </section>
 <hr class="hr-text m-5" data-content="Dernier article">
