@@ -92,10 +92,14 @@ textarea {
     max-width: 90%;
 }
 
+#presentation
+{
+    position: relative;
+}
+
 #presentation img
 {
     width: 100%;
-    position: relative;
 }
 
 #header-text
@@ -110,7 +114,20 @@ textarea {
 
 #header-text .lead
 {
-    margin-top: 250px;
+    margin-top: 15%;
     font-size: 1.5em;
     font-weight: bold;
+}
+
+@media all and (min-device-width: 992px)
+{
+    #header-text
+    {
+        position: relative;
+    }
+
+    #header-text .lead
+    {
+        margin-top: 0;
+    }
 }

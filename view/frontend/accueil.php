@@ -2,9 +2,9 @@
 ob_start();
 ?>
 <section id="presentation">
-    <img src="public/images/header2.jpg" alt="empty road and railroad at night">
+    <img class="d-none d-lg-block"src="public/images/header2.jpg" alt="empty road and railroad at night">
     <div id="header-text">
-        <h1 class="display-3">Billet simple pour l'Alaska - Jean Forteroche.</h1>
+        <h1 class="display-3">Billet simple pour l'Alaska - Jean Forteroche</h1>
         <br>
         <p class="lead">Adepte des nouvelles technologies, je vous propose un nouveau concept : celui de publier mon livre chapitre
         par chapitre, directement en ligne. Un peu comme une série en fait !</p>
