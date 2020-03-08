@@ -6,11 +6,23 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
-    background-color: #555;
+    background-color: #697D82;
     padding-top: 60px;
     /* Height of the navbar */
     padding-bottom: 60px;
     /* Height of the footer */
+}
+
+nav
+{
+    font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    background-color: #14203D;
+}
+
+header .navbar-brand img
+{
+    height: 70px;
 }
 
 footer {
@@ -48,9 +60,11 @@ p {
     display: inline-block;
     color: black;
     padding: 0 .5em;
-    line-height: 1.5em;
+    line-height: 1em;
     color: white;
-    background-color: #555;
+    background-color: #697D82;
+    font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
 }
 
 #navbarSupportedContent {
@@ -76,4 +90,27 @@ p {
 
 textarea {
     max-width: 90%;
+}
+
+#presentation img
+{
+    width: 100%;
+    position: relative;
+}
+
+#header-text
+{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
+    width: 90%;
+}
+
+#header-text .lead
+{
+    margin-top: 250px;
+    font-size: 1.5em;
+    font-weight: bold;
 }

@@ -1,14 +1,14 @@
 <?php $title = 'Accueil';
 ob_start();
 ?>
-<section id="presentation" class="m-3">
-    <h1>Billet simple pour l'Alaska - Jean Forteroche.</h1>
-
-    <h2> Bienvenue !</h2>
-
-    <p>Ayant marre d'écrire sur du papier, j'ai décidé de créer un nouveau concept : celui de publier mon livre chapitre
+<section id="presentation">
+    <img src="public/images/header2.jpg" alt="empty road and railroad at night">
+    <div id="header-text">
+        <h1 class="display-3">Billet simple pour l'Alaska - Jean Forteroche.</h1>
+        <br>
+        <p class="lead">Adepte des nouvelles technologies, je vous propose un nouveau concept : celui de publier mon livre chapitre
         par chapitre, directement en ligne. Un peu comme une série en fait !</p>
-    <p>Bientôt la publication du premier chapitre ! Soyez patients...</p>
+        </div>
 </section>
 <hr class="hr-text m-5" data-content="Dernier article">
 <section id="last-article">
@@ -27,28 +27,25 @@ ob_start();
         <div class="card">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">1st book</h5>
-                <p class="card-text text-dark">Some quick example text to build on the card title and make up the bulk
-                    of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">Le Palais de la Lune</h5>
+                <p class="card-text text-dark">Éditions Actes Ouest <br> 19.90€</p>
+                <a href="#" class="btn btn-primary">Voir plus</a>
             </div>
         </div>
         <div class="card">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">2nd book</h5>
-                <p class="card-text text-dark">Some quick example text to build on the card title and make up the bulk
-                    of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">Alice sur le fil</h5>
+                <p class="card-text text-dark">Éditions Actes Ouest <br> 19.90€</p>
+                <a href="#" class="btn btn-primary">Voir plus</a>
             </div>
         </div>
         <div class="card">
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">3rd book</h5>
-                <p class="card-text text-dark">Some quick example text to build on the card title and make up the bulk
-                    of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h5 class="card-title">Les rêves rouges</h5>
+                <p class="card-text text-dark">Éditions Actes Ouest <br> 19.90€</p>
+                <a href="#" class="btn btn-primary">Voir plus</a>
             </div>
         </div>
     </div>
