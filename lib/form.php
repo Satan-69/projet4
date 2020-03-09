@@ -7,6 +7,11 @@ class Form
         return '<input type="text" name="' . $name . '">';
     }
 
+    public function password()
+    {
+        return '<input type="password" name="password">';
+    }
+
     public function textArea()
     {
         return '<textarea rows=10 cols=40 placeholder="Écrivez votre message ici."></textarea>';

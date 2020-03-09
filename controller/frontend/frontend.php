@@ -86,6 +86,15 @@ class Frontend
         }
     }
 
+    public function login()
+    {
+        if (isset($this->url))
+        {
+            $form = new Form;
+            require 'view/backend/login.php';
+        }
+    }
+
     public function addComment($postId, $author, $comment)
     {
         $commentManager = new CommentManager;    

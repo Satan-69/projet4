@@ -11,7 +11,7 @@ ob_start();
 
     <form action="#" method="post">
         <p><label for="name">Votre nom : <br><?=$form->input('name');?></label><br></p>
-        <p><label for="name">Votre email : <br><?=$form->input('email');?></label><br></p>
+        <p><label for="email">Votre email : <br><?=$form->input('email');?></label><br></p>
         <p>Votre message :</p>
         <?=$form->textArea();?> <br>
         <?=$form->submit();?>

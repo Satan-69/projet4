@@ -1,6 +1,6 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg fixed-top">
-        <a class="navbar-brand" href="#"><img src="public/images/logoJF.png" alt="logo de Jean Forteroche"></a>
+        <a class="navbar-brand" href="accueil.php"><img src="public/images/logoJF.png" alt="logo de Jean Forteroche"></a>
         <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">

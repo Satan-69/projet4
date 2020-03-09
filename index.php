@@ -38,16 +38,14 @@ try {
         // Si on demande la page de contact
         else if (strpos($controller->url, 'contact.php')) 
             $controller->contact();
-            
-        //     // Si on veut se connecter au back-office
-        //     else if (isset ($_GET['admin.php']))
-        //     {
 
-        //     }
         // Si on veut s'abonner
         else if (strpos($controller->url, 'register.php')) 
             $controller->register();
 
+        // Si on veut se connecter au back-office
+        else if (strpos($controller->url, 'login.php'))
+            $controller->login();
 
         // Par défaut, on charge la page d'accueil
         else {
