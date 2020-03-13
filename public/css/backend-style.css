@@ -1,0 +1,58 @@
+body
+{
+    background-color: #697D82;
+    width: 100%;
+    text-align: center;
+}
+
+.wrapper
+{
+    display: flex;
+    align-items: stretch;
+}
+
+nav
+{
+    background-color: #14203D;
+    border-bottom: 1px solid white;
+}
+
+h1, h2, h3, h4, h5, h6, p, a
+{
+    color: white;
+}
+
+nav, .sidebar-header
+{
+    height: 67px;
+}
+
+#sidebar {
+    width: 250px;
+    height: 100vh;
+    border-right: 1px solid white;
+}
+
+#sidebar.hidden {
+    margin-left: -250px;
+}
+
+#sidebar a
+{
+    padding: 20px;
+}
+
+#sidebar h4
+{
+    margin: 30px;
+}
+
+#sidebar hr
+{
+    background-color: white;
+}
+
+#content
+{
+    width: 100%;
+}

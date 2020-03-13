@@ -91,10 +91,10 @@ class Frontend
         if (isset($this->url))
         {
             $form = new Form;
-            require 'view/backend/login.php';
+            require 'view/frontend/login.php';
         }
     }
-
+    
     public function addComment($postId, $author, $comment)
     {
         $commentManager = new CommentManager;    

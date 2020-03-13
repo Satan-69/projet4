@@ -17,8 +17,8 @@ ob_start();
 
     <!-- Get the last article published -->
     <article class="article">
-        <h3><a href="article.php?id=<?=$article['id']?>"><?=$article['title'];?></a></h3>
-        <p>Publié le <?=$article['date_posted'];?> , par <?=$article['author'];?></p>
+        <h2 class="h1"><a href="article.php?id=<?=$article['id']?>"><?=$article['title'];?></a></h3>
+        <p class="m-3">Publié le <?=$article['date_posted'];?> , par <?=$article['author'];?></p>
 
         <p><?=nl2br(htmlspecialchars($article['content']));?></p>
     </article>

@@ -12,10 +12,12 @@ body {
     padding-bottom: 60px;
     /* Height of the footer */
 }
-
-nav
+h1.articles, article h2, nav, #header-text
 {
     font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
+}
+nav
+{
     font-size: 1.5em;
     background-color: #14203D;
 }
@@ -67,6 +69,39 @@ p {
     font-size: 1.2em;
 }
 
+.hr-shine
+{
+    border: 0;
+    margin: 1.35em auto;
+    max-width: 100%;
+    background-position: 50%;
+    box-sizing: border-box;
+}
+
+.shine {
+    height: 20px;
+    width: 75%;
+    background-image: radial-gradient(
+      farthest-side at 50% -50%,
+      hsla(0, 0%, 0%, 0.5),
+      hsla(0, 0%, 0%, 0));
+    position: relative; 
+  }
+  
+  .shine::before {
+    height: 1px;
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(
+      90deg,
+      hsla(0, 0%, 0%, 0),
+      hsla(0, 0%, 0%, 0.75) 50%,
+      hsla(0, 0%, 0%, 0));
+  } 
+  
+
 #navbarSupportedContent {
     width: 60%;
     text-align: center;
@@ -108,7 +143,6 @@ textarea {
     top: 15%;
     left: 50%;
     transform: translateX(-50%);
-    font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
     width: 90%;
 }
 

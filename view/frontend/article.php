@@ -3,8 +3,8 @@ ob_start();?>
 
 <!-- Display de l'article -->
 <article class="article">
-    <h3><?=$article['title'];?></h3>
-    <p>Publié le <?=$article['date_posted'];?> , par <?=$article['author'];?></p>
+    <h2 class="display-3"><?=$article['title'];?></h2>
+    <p class="m-3">Publié le <?=$article['date_posted'];?> , par <?=$article['author'];?></p>
 
     <p><?=nl2br(htmlspecialchars($article['content']));?></p>
 </article>

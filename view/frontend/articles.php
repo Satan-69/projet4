@@ -1,6 +1,6 @@
 <?php $title = 'Les chapitres';
 ob_start();?>
-<h2>Les chapitres</h2>
+<h1 class="articles display-3 m-3">Les Chapitres</h1>
 
 <?php
 while ($donnees = $req->fetch()) {
@@ -17,11 +17,11 @@ while ($donnees = $req->fetch()) {
     }
 ?>
 <article class="article">
-    <h3 class="m-3"><a href="article.php?id=<?=$donnees['id']?>"><?=$donnees['title'];?></a></h3>
+    <h2 class="m-3"><a href="article.php?id=<?=$donnees['id']?>"><?=$donnees['title'];?></a></h2>
     <p>Publié le <?=$donnees['date_posted'];?> , par <?=$donnees['author'];?></p>
 
     <p class=" text-center"><?=nl2br(htmlspecialchars($content));?></p>
-    <hr>
+    <hr class="hr-shine shine">
 </article>
 <?php
 }
