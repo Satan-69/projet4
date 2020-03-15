@@ -82,6 +82,7 @@ class Frontend
     {
         if (isset($this->url))
         {
+            $form = new Form;
             require 'view/frontend/register.php';
         }
     }

@@ -1,5 +1,6 @@
 <?php
 require_once 'lib/form.php';
+require_once 'model/frontend/UserManager.php';
 
 class Backend
 {
@@ -26,13 +27,42 @@ class Backend
     public function auth()
     {
         if (isset($this->url))
-        require 'view/backend/auth.php';
+        {
+            if (isset($_POST['name']) && isset($_POST['password']))
+            {
+                $userManager = new UserManager();
+                $user = $userManager->getUser($_POST['name']);
+                $name = $user['pseudo'];
+                $password = $user['passwd'];
+
+                if($name == $_POST['name'] && $password == $_POST['password'])
+                {
+                    $_SESSION['name'] = $_POST['name'];
+                    $_SESSION['password'] = $_POST['password'];
+                    header('Location: dashboard.php');
+                }
+                else
+                {
+                    echo '<body onLoad="alert(\'Mauvais identifiants !\')">';
+                    echo '<meta http-equiv="refresh" content="0;URL=accueil.php">';
+                }
+            }
+            else
+            {
+                throw new Exception('Veuillez renseigner votre nom et votre mot de passe');
+            }
+        }
     }
 
     public function logout()
     {
         if (isset($this->url))
-        require 'view/backend/logout.php';
+            {
+                session_unset();
+                session_destroy();
+                echo '<body onLoad="alert(\'Vous avez bien été déconnecté\')">';
+                echo '<meta http-equiv="refresh" content="0;URL=accueil.php">';
+            }
     }
 
     public function dashboard()

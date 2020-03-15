@@ -5,9 +5,9 @@ ob_start();
 
 
 <section id="contact">
-    <h1>Contactez moi !</h1>
+    <h1 class="display-4">Contactez moi !</h1>
 
-    <p class="m-4">Une question ? Une critique ? Une suggestion ? N'hésitez pas à m'en faire part.</p>
+    <h3 class="m-4">Une question ? Une critique ? Une suggestion ? N'hésitez pas à m'en faire part.</h3>
 
     <form action="#" method="post">
         <p><label for="name">Votre nom : <br><?=$form->input('name');?></label><br></p>

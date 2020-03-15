@@ -12,7 +12,7 @@ body {
     padding-bottom: 60px;
     /* Height of the footer */
 }
-h1.articles, article h2, nav, #header-text
+h1, article h2, nav, #header-text, h3, .h3
 {
     font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
 }

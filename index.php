@@ -10,6 +10,7 @@ try {
         // Si on demande la page d'accueil
         if (strpos($frontend->url,'accueil.php')) 
             $frontend->home();
+            
 
         // Si on demande la page d'articles
         else if (strpos($frontend->url, 'articles.php'))
@@ -54,23 +55,43 @@ try {
         
         //Déconnexion
         else if (strpos($backend->url, 'logout.php'))
-            $backend->logout();
+        {
+            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            {
+                    $backend->logout();
+            }
+            else
+            {
+                throw new Exception('Pas d\'identifiants renseignés');
+            }
+        }
 
         //dashboard
         else if (strpos($backend->url, 'dashboard.php'))
-            $backend->dashboard();
+        {
+            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            {
+                    $backend->dashboard();
+            }
+            else
+            {
+                throw new Exception('Pas d\'identifiants renseignés');
+            }
+        }
 
         //nouvel article
         else if (strpos($backend->url, 'create.php'))
         {
-            $backend->createArticle();
+            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            {
+                    $backend->createArticle();
+            }
+            else
+            {
+                throw new Exception('Pas d\'identifiants renseignés');
+            }
         }
 
-        // Déconnexion
-        else if (strpos($backend->url, 'logout.php'))
-        {
-            $backend->logout();
-        }
         // Par défaut, on charge la page d'accueil
         else {
             $frontend->home();

@@ -1,6 +1,6 @@
 <?php $title = 'Les chapitres';
 ob_start();?>
-<h1 class="articles display-3 m-3">Les Chapitres</h1>
+<h1 class="articles display-4 m-3">Les Chapitres</h1>
 
 <?php
 while ($donnees = $req->fetch()) {
