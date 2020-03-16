@@ -40,7 +40,6 @@ class Backend
                 }
                 else
                 {
-                    
                     echo '<body onLoad="alert(\'Mauvais identifiants !\')">';
                     echo '<meta http-equiv="refresh" content="0;URL=accueil.php">';
                 }
