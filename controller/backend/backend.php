@@ -30,9 +30,8 @@ class Backend
                 $user = $userManager->getUser($_POST['name']);
                 $name = $user['pseudo'];
                 $password = $user['passwd'];
-                $pass_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-                if($name == $_POST['name'] && $password == $_POST['password'])
+                if($name == $_POST['name'] && password_verify($_POST['password'], $password))
                 {
                     $_SESSION['name'] = $_POST['name'];
                     $_SESSION['password'] = $_POST['password'];
@@ -41,7 +40,7 @@ class Backend
                 else
                 {
                     echo '<body onLoad="alert(\'Mauvais identifiants !\')">';
-                    echo '<meta http-equiv="refresh" content="0;URL=accueil.php">';
+                    echo '<meta http-equiv="refresh" content="0;URL=login.php">';
                 }
             }
             else

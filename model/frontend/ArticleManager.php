@@ -31,9 +31,10 @@ class ArticleManager extends Manager
         return $article;
     }
 
-    public function insertArticle()
+    public function postArticle($author, $title, $content)
     {
         $db = $this->dbConnect();
-        $req = $db->query('INSERT INTO articles() ');
+        $req = $db->prepare('INSERT INTO articles(author, title, content, date_posted) VALUES (?, ?, ?, NOW())');
+        $req->execute(array($author, $title, $content));
     }
 }
