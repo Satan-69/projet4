@@ -57,39 +57,27 @@ try {
         else if (strpos($backend->url, 'logout.php'))
         {
             if (isset($_SESSION['name']) && isset($_SESSION['password']))
-            {
                     $backend->logout();
-            }
             else
-            {
                 throw new Exception('Pas d\'identifiants renseignés');
-            }
         }
 
         //dashboard
         else if (strpos($backend->url, 'dashboard.php'))
         {
             if (isset($_SESSION['name']) && isset($_SESSION['password']))
-            {
-                    $backend->dashboard();
-            }
+                $backend->dashboard();
             else
-            {
                 throw new Exception('Pas d\'identifiants renseignés');
-            }
         }
 
         //nouvel article
         else if (strpos($backend->url, 'create.php'))
         {
             if (isset($_SESSION['name']) && isset($_SESSION['password']))
-            {
-                    $backend->createArticle();
-            }
+                $backend->createArticle();
             else
-            {
                 throw new Exception('Pas d\'identifiants renseignés');
-            }
         }
 
         // Par défaut, on charge la page d'accueil

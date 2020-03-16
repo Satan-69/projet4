@@ -30,4 +30,10 @@ class ArticleManager extends Manager
 
         return $article;
     }
+
+    public function insertArticle()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('INSERT INTO articles() ');
+    }
 }

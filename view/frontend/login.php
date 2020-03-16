@@ -10,6 +10,11 @@ ob_start();
     <?=$form->submit();?>
 </form>
 
+<?=  password_hash('charles', PASSWORD_DEFAULT);
+    ?>
+
+
+
 <?php
 $content = ob_get_clean();
 include 'template.php';
