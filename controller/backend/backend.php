@@ -65,7 +65,11 @@ class Backend
     public function dashboard()
     {
         if (isset($this->url))
+        {   
+            $articleManager = new ArticleManager;
+            $req = $articleManager->getArticles();
             require 'view/backend/dashboard.php';
+        }
     }
 
     public function write()

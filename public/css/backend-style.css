@@ -67,3 +67,27 @@ nav, .sidebar-header
 {
     width: 500px;
 }
+
+.hr-shine
+{
+    border: 0;
+    margin: 1.35em auto;
+    max-width: 100%;
+    background-position: 50%;
+    box-sizing: border-box;
+}
+
+.shine {
+    height: 20px;
+    width: 75%;
+    background-image: radial-gradient(
+      farthest-side at 50% -50%,
+      hsla(0, 0%, 0%, 0.5),
+      hsla(0, 0%, 0%, 0));
+    position: relative; 
+  }
+  article
+  {
+      width: 85%;
+      margin: 0 auto;
+  }
