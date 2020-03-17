@@ -6,17 +6,14 @@ require 'controller/backend/backend.php';
 try {
     $frontend = new Frontend;
     $backend = new Backend;
-    if (isset($frontend->url)) {
-        // Si on demande la page d'accueil
+    if (isset($frontend->url)) 
+    {
         if (strpos($frontend->url,'accueil.php')) 
             $frontend->home();
             
-
-        // Si on demande la page d'articles
         else if (strpos($frontend->url, 'articles.php'))
             $frontend->articles();
 
-        // Charge l'article demandé et ses commentaires
         else if (strpos($frontend->url, 'article.php'))
         {
             if (isset($_GET['id']) && $_GET['id'] > 0) 
@@ -33,19 +30,15 @@ try {
             }
         }
 
-        // Si on demande la page biographie
         else if (strpos($frontend->url, 'biographie.php')) 
             $frontend->biography();
 
-        // Si on demande la page de contact
         else if (strpos($frontend->url, 'contact.php')) 
             $frontend->contact();
 
-        // Si on veut s'abonner
         else if (strpos($frontend->url, 'register.php')) 
             $frontend->register();
 
-        // Si on veut se connecter au back-office
         else if (strpos($frontend->url, 'login.php'))
             $frontend->login();
         
@@ -53,7 +46,6 @@ try {
         else if (strpos($backend->url, 'auth.php'))
             $backend->auth();
         
-        //Déconnexion
         else if (strpos($backend->url, 'logout.php'))
         {
             if (isset($_SESSION['name']) && isset($_SESSION['password']))
@@ -62,7 +54,6 @@ try {
                 throw new Exception('Pas d\'identifiants renseignés');
         }
 
-        //dashboard
         else if (strpos($backend->url, 'dashboard.php'))
         {
             if (isset($_SESSION['name']) && isset($_SESSION['password']))
@@ -71,20 +62,29 @@ try {
                 throw new Exception('Pas d\'identifiants renseignés');
         }
 
-        //nouvel article
-        else if (strpos($backend->url, 'create.php'))
+        // écrire un nouvel article
+        else if (strpos($backend->url, 'write.php'))
         {
             if (isset($_SESSION['name']) && isset($_SESSION['password']))
-                $backend->createArticle();
+                $backend->write();
+            else
+                throw new Exception('Pas d\'identifiants renseignés');
+        }
+
+        // Enregistrer un nouvel article
+        else if (strpos($backend->url, 'newArticle.php'))
+        {
+            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+                $backend->newArticle($_POST['title'], $_POST['textcontent']);
             else
                 throw new Exception('Pas d\'identifiants renseignés');
         }
 
         // Par défaut, on charge la page d'accueil
-        else {
+        else
             $frontend->home();
-            }
     }
-} catch (Exception $e) {
+} 
+catch (Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
 }

@@ -1,8 +1,14 @@
+
 body
 {
     background-color: #697D82;
     width: 100%;
     text-align: center;
+}
+
+.dancingscript
+{
+    font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
 }
 
 .wrapper
@@ -55,4 +61,9 @@ nav, .sidebar-header
 #content
 {
     width: 100%;
+}
+
+.titleinput
+{
+    width: 500px;
 }

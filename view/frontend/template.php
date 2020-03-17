@@ -2,6 +2,8 @@
 <html lang="fr">
 
 <head>
+    <title>Jean Forteroche - <?=$title?></title>
+    <link rel="icon" type="image/png" href="public/images/logoJF.png" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit = no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -12,7 +14,6 @@
     <link rel="stylesheet" href="public/css/style.css">
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
-    <title>Jean Forteroche - <?=$title?></title>
 </head>
 
 <body>

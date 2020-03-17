@@ -1,6 +1,7 @@
 <?php
 require_once 'lib/form.php';
 require_once 'model/frontend/UserManager.php';
+require_once 'model/frontend/ArticleManager.php';
 
 class Backend
 {
@@ -24,7 +25,7 @@ class Backend
     {
         if (isset($this->url))
         {
-            if (isset($_POST['name']) && strlen($_POST['name']) > 0 && isset($_POST['password']) && strlen($_POST['password']) > 0)
+            if (isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['password']) && !empty($_POST['password']))
             {
                 $userManager = new UserManager();
                 $user = $userManager->getUser($_POST['name']);
@@ -67,9 +68,29 @@ class Backend
             require 'view/backend/dashboard.php';
     }
 
-    public function createArticle()
+    public function write()
+    {
+        if (isset($this->url))  
+            require "view/backend/write.php";
+    }
+
+    public function newArticle($title, $textcontent)
     {
         if (isset($this->url))
-            require "view/backend/create.php";
+        {
+            if (isset($_POST['title']) && !empty($_POST['title']) && isset($_POST['textcontent']) && !empty($_POST['textcontent']))
+            {
+                $articleManager = new ArticleManager;
+                $input = $articleManager->postArticle($title, $textcontent);
+
+                if ($input === false)
+                    throw new Exception('Impossible d\'ajouter le contenu');
+                else
+                    header('Location: dashboard.php');
+            }
+            else
+            throw new Exception('Veuillez renseigner le titre ET le contenu !');
+        }
     }
+
 }
