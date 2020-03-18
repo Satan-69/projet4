@@ -22,12 +22,7 @@ try {
                 throw new Exception('Aucun ID d\'article envoyé'); 
             // Si l'utilisateur poste un commentaire sur un article
             if (isset($_GET['action']) && $_GET['action'] == 'addComment')
-            {
-                if (!empty($_POST['author']) && !empty($_POST['comment']))
-                    $frontend->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
-                else
-                    throw new Exception('Tous les champs du commentaire ne sont pas remplis');
-            }
+                $frontend->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
         }
 
         else if (strpos($frontend->url, 'biographie.php')) 
@@ -42,43 +37,19 @@ try {
         else if (strpos($frontend->url, 'login.php'))
             $frontend->login();
         
-        //Checking des identifiants de connexion au back end
-        else if (strpos($backend->url, 'auth.php'))
-            $backend->auth();
-        
         else if (strpos($backend->url, 'logout.php'))
-        {
-            if (isset($_SESSION['name']) && isset($_SESSION['password']))
-                    $backend->logout();
-            else
-                throw new Exception('Pas d\'identifiants renseignés');
-        }
+            $backend->logout();
 
         else if (strpos($backend->url, 'dashboard.php'))
-        {
-            if (isset($_SESSION['name']) && isset($_SESSION['password']))
-                $backend->dashboard();
-            else
-                throw new Exception('Pas d\'identifiants renseignés');
-        }
+            $backend->dashboard();
 
         // écrire un nouvel article
         else if (strpos($backend->url, 'write.php'))
-        {
-            if (isset($_SESSION['name']) && isset($_SESSION['password']))
-                $backend->write();
-            else
-                throw new Exception('Pas d\'identifiants renseignés');
-        }
+            $backend->write();
 
         // Enregistrer un nouvel article
         else if (strpos($backend->url, 'newArticle.php'))
-        {
-            if (isset($_SESSION['name']) && isset($_SESSION['password']))
-                $backend->newArticle($_POST['title'], $_POST['textcontent']);
-            else
-                throw new Exception('Pas d\'identifiants renseignés');
-        }
+            $backend->newArticle($_POST['title'], $_POST['textcontent']);
 
         // Par défaut, on charge la page d'accueil
         else

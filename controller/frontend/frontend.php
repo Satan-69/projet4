@@ -98,13 +98,18 @@ class Frontend
     
     public function addComment($postId, $author, $comment)
     {
-        $commentManager = new CommentManager;    
-        $input = $commentManager->postComment($postId, $author, $comment);
+        if (!empty($_POST['author']) && !empty($_POST['comment']))
+        {
+            $commentManager = new CommentManager;    
+            $input = $commentManager->postComment($postId, $author, $comment);
 
-        if ($input === false)
-            throw new Exception('Impossible d\'ajouter le commentaire');
+            if ($input === false)
+                throw new Exception('Impossible d\'ajouter le commentaire');
+            else
+                header('Location: article.php?id='.$postId);
+        }
         else
-            header('Location: article.php?id='.$postId);
+            throw new Exception('Tous les champs du commentaire ne sont pas remplis');
     }
 }
 

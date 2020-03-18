@@ -21,10 +21,26 @@ class Backend
             throw new Exception('invalid URL');
     }
 
-    public function auth()
+    public function logout()
     {
         if (isset($this->url))
         {
+            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            {
+                session_unset();
+                session_destroy();
+                echo '<body onLoad="alert(\'Vous avez bien été déconnecté\')">';
+                echo '<meta http-equiv="refresh" content="0;URL=accueil.php">';
+            }
+            else
+                throw new Exception('Pas d\'identifiants renseignés');
+        }
+    }
+
+    public function dashboard()
+    {
+        if (isset($this->url))
+        {   
             if (isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['password']) && !empty($_POST['password']))
             {
                 $userManager = new UserManager();
@@ -36,7 +52,10 @@ class Backend
                 {
                     $_SESSION['name'] = $_POST['name'];
                     $_SESSION['password'] = $_POST['password'];
-                    header('Location: dashboard.php');
+
+                    $articleManager = new ArticleManager;
+                    $req = $articleManager->getArticles();
+                    require 'view/backend/dashboard.php';
                 }
                 else
                 {
@@ -45,55 +64,38 @@ class Backend
                 }
             }
             else
-            {
                 throw new Exception('Veuillez renseigner votre nom et votre mot de passe');
-            }
-        }
-    }
-
-    public function logout()
-    {
-        if (isset($this->url))
-        {
-            session_unset();
-            session_destroy();
-            echo '<body onLoad="alert(\'Vous avez bien été déconnecté\')">';
-            echo '<meta http-equiv="refresh" content="0;URL=accueil.php">';
-        }
-    }
-
-    public function dashboard()
-    {
-        if (isset($this->url))
-        {   
-            $articleManager = new ArticleManager;
-            $req = $articleManager->getArticles();
-            require 'view/backend/dashboard.php';
         }
     }
 
     public function write()
     {
-        if (isset($this->url))  
+        if (isset($this->url))
+        {
+            if (isset($_SESSION['name']) && isset($_SESSION['password']))
             require "view/backend/write.php";
+        }
+        else
+            throw new Exception('Pas d\'identifiants renseignés');
     }
 
     public function newArticle($title, $textcontent)
     {
         if (isset($this->url))
         {
-            if (isset($_POST['title']) && !empty($_POST['title']) && isset($_POST['textcontent']) && !empty($_POST['textcontent']))
+            if (isset($_SESSION['name']) && isset($_SESSION['password']))
             {
-                $articleManager = new ArticleManager;
-                $input = $articleManager->postArticle($title, $textcontent);
-
-                if ($input === false)
-                    throw new Exception('Impossible d\'ajouter le contenu');
-                else
+                if (isset($_POST['title']) && !empty($_POST['title']) && isset($_POST['textcontent']) && !empty($_POST['textcontent']))
+                {
+                    $articleManager = new ArticleManager;
+                    $input = $articleManager->postArticle($title, $textcontent);
                     header('Location: dashboard.php');
+                }
+                else
+                    throw new Exception('Veuillez renseigner le titre ET le contenu !');
             }
             else
-            throw new Exception('Veuillez renseigner le titre ET le contenu !');
+                throw new Exception('Pas d\'identifiants renseignés');
         }
     }
 

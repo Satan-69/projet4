@@ -5,9 +5,7 @@ ob_start();?>
 <?php
 while ($donnees = $req->fetch()) {
     if (strlen($donnees['content']) <= 400)
-    {
       $content = $donnees['content'];
-    }
     else
     {
       $debut = substr($donnees['content'], 0, 400);
