@@ -6,7 +6,7 @@ require_once 'model/frontend/ArticleManager.php';
 class Backend
 {
     public $url;
-
+    
     public function __construct()
     {
         $this->getUrl();
@@ -40,31 +40,52 @@ class Backend
     public function dashboard()
     {
         if (isset($this->url))
-        {   
-            if (isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['password']) && !empty($_POST['password']))
+        {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recaptcha'])) 
             {
-                $userManager = new UserManager();
-                $user = $userManager->getUser($_POST['name']);
-                $name = $user['pseudo'];
-                $password = $user['passwd'];
-
-                if($name == $_POST['name'] && password_verify($_POST['password'], $password))
+                // Build POST request:
+                $secret_key = '6LevuuIUAAAAALxQD3CTY5fkm1GksYPgjyqTCp6_';
+                $recaptcha_response = $_POST['recaptcha'];
+            
+                // Make and decode POST request:
+                $recaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $recaptcha_response);
+                $recaptcha = json_decode($recaptcha);
+            
+                // Take action based on the score returned:
+                if ($recaptcha->score >= 0.7) // run the login check
                 {
-                    $_SESSION['name'] = $_POST['name'];
-                    $_SESSION['password'] = $_POST['password'];
-
-                    $articleManager = new ArticleManager;
-                    $req = $articleManager->getArticles();
-                    require 'view/backend/dashboard.php';
+                    if (isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['password']) && !empty($_POST['password']))
+                    {
+                        $userManager = new UserManager();
+                        $user = $userManager->getUser($_POST['name']);
+                        $name = $user['pseudo'];
+                        $password = $user['passwd'];
+        
+                        if($name == $_POST['name'] && password_verify($_POST['password'], $password))
+                        {
+                            $_SESSION['name'] = $_POST['name'];
+                            $_SESSION['password'] = $_POST['password'];
+        
+                            $articleManager = new ArticleManager;
+                            $req = $articleManager->getArticles();
+                            require 'view/backend/dashboard.php';
+                        }
+                        else
+                        {
+                            echo '<body onLoad="alert(\'Mauvais identifiants !\')">';
+                            echo '<meta http-equiv="refresh" content="0;URL=login.php">';
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception('Veuillez renseigner votre nom et votre mot de passe');
+                    }
                 }
-                else
+                else 
                 {
-                    echo '<body onLoad="alert(\'Mauvais identifiants !\')">';
-                    echo '<meta http-equiv="refresh" content="0;URL=login.php">';
+                    throw new Exception('robot');
                 }
-            }
-            else
-                throw new Exception('Veuillez renseigner votre nom et votre mot de passe');
+            }   
         }
     }
 

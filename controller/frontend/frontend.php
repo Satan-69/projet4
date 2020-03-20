@@ -102,11 +102,7 @@ class Frontend
         {
             $commentManager = new CommentManager;    
             $input = $commentManager->postComment($postId, $author, $comment);
-
-            if ($input === false)
-                throw new Exception('Impossible d\'ajouter le commentaire');
-            else
-                header('Location: article.php?id='.$postId);
+            header('Location: article.php?id='.$postId);
         }
         else
             throw new Exception('Tous les champs du commentaire ne sont pas remplis');
