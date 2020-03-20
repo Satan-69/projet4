@@ -39,4 +39,11 @@ class ArticleManager extends Manager
 
         return $input;
     }
+
+    public function deleteArticle($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE from articles WHERE id= :id');
+        $req->execute(array('id' => $id ));
+    }
 }

@@ -16,14 +16,11 @@ while ($donnees = $req->fetch()) {
     }
 ?>
 <article class="article">
-    <h2 class="m-3 dancingscript"><a href="article.php?id=<?=$donnees['id']?>"><?=$donnees['title'];?></a></h2>
+    <h2 class="m-3 dancingscript"><a href="articleBackend.php?id=<?=$donnees['id']?>"><?=$donnees['title'];?></a></h2>
     <p>Publié le <?=$donnees['date_posted'];?> , par <?=$donnees['author'];?></p>
 
     <p class=" text-center"><?=nl2br(htmlspecialchars($content));?></p>
 </article>
-<button class="btn btn-primary mx-2"><a href="#">Éditer le chapitre</a></button>
-<button class="btn btn-danger mx-2"><a href="#">Supprimer le chapitre</a></button>
-<hr class="hr-shine shine">
 <?php
 }
 $req->closeCursor();

@@ -85,7 +85,9 @@ class Backend
                 {
                     throw new Exception('robot');
                 }
-            }   
+            }
+            else
+            throw new Exception('Merci de vous réidentifier');   
         }
     }
 
@@ -98,6 +100,19 @@ class Backend
         }
         else
             throw new Exception('Pas d\'identifiants renseignés');
+    }
+
+    public function articleBackend()
+    {
+        if (isset($this->url))
+        {
+            $articleManager = new ArticleManager;
+            $commentManager = new CommentManager;
+            $article = $articleManager->getArticle($_GET['id']);
+            $comments = $commentManager->getComments($_GET['id']);
+
+            require 'view/backend/articleBackend.php';
+        }
     }
 
     public function newArticle($title, $textcontent)
@@ -114,6 +129,28 @@ class Backend
                 }
                 else
                     throw new Exception('Veuillez renseigner le titre ET le contenu !');
+            }
+            else
+                throw new Exception('Pas d\'identifiants renseignés');
+        }
+    }
+
+    public function modify()
+    {
+        if (isset($this->url))
+        {
+            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            {
+                $articleManager = new ArticleManager;
+                if(isset($_POST['delete']))
+                {
+                    $articleManager->deleteArticle($_GET['id']);
+                    header('Location: dashboard.php');
+                }
+                else if (isset($_POST['update']))
+                {
+                    header('Location: dashboard.php');
+                }
             }
             else
                 throw new Exception('Pas d\'identifiants renseignés');

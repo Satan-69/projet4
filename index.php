@@ -51,6 +51,14 @@ try {
         else if (strpos($backend->url, 'newArticle.php'))
             $backend->newArticle($_POST['title'], $_POST['textcontent']);
 
+        else if (strpos($backend->url, 'articleBackend.php'))
+        {
+            $backend->articleBackend();
+        }
+
+        else if (strpos($backend->url, 'modify.php'))
+            $backend->modify();
+
         // Par défaut, on charge la page d'accueil
         else
             $frontend->home();
