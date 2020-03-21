@@ -2,6 +2,7 @@
 require_once 'model/frontend/Manager.php';
 require_once 'model/frontend/ArticleManager.php';
 require_once 'model/frontend/CommentManager.php';
+require_once 'model/frontend/UserManager.php';
 require_once 'lib/form.php';
 
 class Frontend
@@ -87,15 +88,6 @@ class Frontend
         }
     }
 
-    public function login()
-    {
-        if (isset($this->url))
-        {
-            $form = new Form;
-            require 'view/frontend/login.php';
-        }
-    }
-    
     public function addComment($postId, $author, $comment)
     {
         if (!empty($_POST['author']) && !empty($_POST['comment']))

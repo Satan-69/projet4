@@ -6,7 +6,7 @@ class UserManager extends Manager
     {
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT pseudo, passwd FROM users WHERE pseudo = ?');
-        $req->execute(array($_POST['name']));
+        $req->execute(array($name));
         $res = $req->fetch();
 
         return $res;

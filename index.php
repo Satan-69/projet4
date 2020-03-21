@@ -35,7 +35,7 @@ try {
             $frontend->register();
 
         else if (strpos($frontend->url, 'login.php'))
-            $frontend->login();
+            $backend->login();
         
         else if (strpos($backend->url, 'logout.php'))
             $backend->logout();
