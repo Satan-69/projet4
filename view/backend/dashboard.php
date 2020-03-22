@@ -1,7 +1,7 @@
 <?php $title = 'Admin Panel';
 ob_start();?>
 
-<h1 class="dancingscript">Bienvenue sur le panneau d'administration</h1>
+<h1>Bienvenue sur le panneau d'administration</h1>
 
 <?php
 while ($donnees = $req->fetch()) {
@@ -16,7 +16,7 @@ while ($donnees = $req->fetch()) {
     }
 ?>
 <article class="article">
-    <h2 class="m-3 dancingscript"><a href="articleBackend.php?id=<?=$donnees['id']?>"><?=$donnees['title'];?></a></h2>
+    <h2 class="m-3"><a href="articleBackend.php?id=<?=$donnees['id']?>"><?=$donnees['title'];?></a></h2>
     <p>Publié le <?=$donnees['date_posted'];?> , par <?=$donnees['author'];?></p>
 
     <p class=" text-center"><?=nl2br(htmlspecialchars($content));?></p>

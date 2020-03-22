@@ -4,12 +4,10 @@ body
     background-color: #697D82;
     width: 100%;
     text-align: center;
+    padding-top : 95px;
 }
 
-.dancingscript
-{
-    font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
-}
+
 
 .wrapper
 {
@@ -30,7 +28,7 @@ h1, h2, h3, h4, h5, h6, p, a
 
 nav, .sidebar-header
 {
-    height: 67px;
+    height: 95px;
 }
 
 #sidebar {
@@ -56,6 +54,11 @@ nav, .sidebar-header
 #sidebar hr
 {
     background-color: white;
+}
+
+header .navbar-brand img
+{
+    height: 70px;
 }
 
 #content

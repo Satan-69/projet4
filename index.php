@@ -59,7 +59,6 @@ try {
         else if (strpos($backend->url, 'update.php'))
             $backend->update($_POST['title'], $_POST['textcontent'], $_GET['id']);
 
-
         // Supprimer ou éditer un article
         else if (strpos($backend->url, 'modify.php'))
             $backend->modify();

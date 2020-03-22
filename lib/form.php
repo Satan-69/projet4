@@ -4,7 +4,7 @@ class Form
 {
     public function input($name)
     {
-        return '<input type="text" name="' . $name . '">';
+        return '<input autofocus type="text" name="' . $name . '">';
     }
 
     public function password()

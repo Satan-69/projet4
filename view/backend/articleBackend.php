@@ -8,7 +8,7 @@ ob_start();?>
 </form>
 <hr>
 <article class="article">
-    <h2 class="display-3 dancingscript"><?=$article['title'];?></h2>
+    <h2 class="display-3"><?=$article['title'];?></h2>
     <p class="m-3">Publié le <?=$article['date_posted'];?> , par <?=$article['author'];?></p>
     <p><?=nl2br(htmlspecialchars($article['content']));?></p>
 </article>
@@ -17,7 +17,7 @@ ob_start();?>
 <section id="comments">
     <?php
 while ($comment = $comments->fetch()) {?>
-    <p><strong><?=htmlspecialchars($comment['author'])?></strong>, le <?=$comment['date_posted']?> : </p>
+    <p><strong><?=htmlspecialchars($comment['author'])?></strong>, le <?=htmlspecialchars($comment['date_posted'])?> : </p>
     <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>
     <?php
 }
