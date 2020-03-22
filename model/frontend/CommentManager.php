@@ -20,4 +20,11 @@ class CommentManager extends Manager
 
         return $input;
     }
+
+    public function deleteComments($postId)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE from comments WHERE post_id = :postId');
+        $req->execute(array('postId' => $postId));
+    }
 }

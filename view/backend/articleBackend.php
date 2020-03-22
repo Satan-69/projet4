@@ -10,7 +10,6 @@ ob_start();?>
 <article class="article">
     <h2 class="display-3 dancingscript"><?=$article['title'];?></h2>
     <p class="m-3">Publié le <?=$article['date_posted'];?> , par <?=$article['author'];?></p>
-
     <p><?=nl2br(htmlspecialchars($article['content']));?></p>
 </article>
 <hr>

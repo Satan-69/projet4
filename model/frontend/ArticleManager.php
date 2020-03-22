@@ -43,7 +43,18 @@ class ArticleManager extends Manager
     public function deleteArticle($id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('DELETE from articles WHERE id= :id');
-        $req->execute(array('id' => $id ));
+        $req = $db->prepare('DELETE from articles WHERE id = :id');
+        $req->execute(array('id' => $id));
+    }
+
+    public function updateArticle($title, $textcontent, $id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('UPDATE articles SET title = :title, content = :textcontent, date_posted = NOW() WHERE id = :id');
+        $req->execute(array(
+            'title' => $title,
+            'textcontent' => $textcontent,
+            'id' => $id
+        ));
     }
 }

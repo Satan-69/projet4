@@ -43,6 +43,10 @@ try {
         else if (strpos($backend->url, 'dashboard.php'))
             $backend->dashboard();
 
+        //View back end de l'article (avec les boutons supprimer et éditer)
+        else if (strpos($backend->url, 'articleBackend.php'))
+            $backend->articleBackend();
+
         // écrire un nouvel article
         else if (strpos($backend->url, 'write.php'))
             $backend->write();
@@ -51,11 +55,12 @@ try {
         else if (strpos($backend->url, 'newArticle.php'))
             $backend->newArticle($_POST['title'], $_POST['textcontent']);
 
-        else if (strpos($backend->url, 'articleBackend.php'))
-        {
-            $backend->articleBackend();
-        }
+        // Mettre à jour l'article
+        else if (strpos($backend->url, 'update.php'))
+            $backend->update($_POST['title'], $_POST['textcontent'], $_GET['id']);
 
+
+        // Supprimer ou éditer un article
         else if (strpos($backend->url, 'modify.php'))
             $backend->modify();
 

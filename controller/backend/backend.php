@@ -177,11 +177,36 @@ class Backend
                 if (isset($_POST['title']) && !empty($_POST['title']) && isset($_POST['textcontent']) && !empty($_POST['textcontent']))
                 {
                     $articleManager = new ArticleManager;
-                    $input = $articleManager->postArticle($title, $textcontent);
+                    $input = $articleManager->postArticle($title, nl2br(strip_tags($textcontent)));
                     header('Location: dashboard.php');
                 }
                 else
                     throw new Exception('Veuillez renseigner le titre ET le contenu !');
+            }
+            else
+                throw new Exception('Pas d\'identifiants renseignés');
+        }
+    }
+
+    public function update($title, $textcontent, $id)
+    {
+        if (isset($this->url))
+        {
+            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            {
+                if (isset($_GET['id']))
+                {
+                    if (isset($_POST['title']) && !empty($_POST['title']) && isset($_POST['textcontent']) && !empty($_POST['textcontent']))
+                    {
+                        $articleManager = new ArticleManager;
+                        $input = $articleManager->updateArticle($title, strip_tags($textcontent), $id);
+                        header('Location: dashboard.php');
+                    }
+                    else
+                        throw new Exception('Veuillez renseigner le titre ET le contenu !');
+                }
+                else
+                    throw new Exception('Pas d\'ID d\'article renseigné');
             }
             else
                 throw new Exception('Pas d\'identifiants renseignés');
@@ -197,12 +222,16 @@ class Backend
                 $articleManager = new ArticleManager;
                 if(isset($_POST['delete']))
                 {
+                    $commentManager = new CommentManager;
                     $articleManager->deleteArticle($_GET['id']);
+                    $commentManager->deleteComments($_GET['id']);
+
                     header('Location: dashboard.php');
                 }
                 else if (isset($_POST['update']))
                 {
-                    header('Location: dashboard.php');
+                    $article = $articleManager->getArticle($_GET['id']);
+                    require "view/backend/edit.php";
                 }
             }
             else

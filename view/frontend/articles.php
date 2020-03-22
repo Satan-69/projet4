@@ -15,8 +15,8 @@ while ($donnees = $req->fetch()) {
     }
 ?>
 <article class="article">
-    <h2 class="m-3"><a href="article.php?id=<?=$donnees['id']?>"><?=$donnees['title'];?></a></h2>
-    <p>Publié le <?=$donnees['date_posted'];?> , par <?=$donnees['author'];?></p>
+    <h2 class="m-3"><a href="article.php?id=<?=$donnees['id']?>"><?=htmlspecialchars($donnees['title']);?></a></h2>
+    <p>Publié le <?=htmlspecialchars($donnees['date_posted']);?> , par <?=htmlspecialchars($donnees['author']);?></p>
 
     <p class="text-center"><?=nl2br(htmlspecialchars($content));?></p>
     <hr class="hr-shine shine">

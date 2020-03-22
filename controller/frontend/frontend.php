@@ -18,13 +18,9 @@ class Frontend
     {
         $request = $_SERVER['REQUEST_URI'];
         if (isset($request) && !empty($request))
-        {
             $this->url = $request;
-        }
         else
-        {
             throw new Exception('invalid URL');
-        }
     }
 
     public function home()
@@ -65,9 +61,7 @@ class Frontend
     public function biography()
     {
         if (isset($this->url))
-        {
             require 'view/frontend/biographie.php';
-        }
     }
 
     public function contact()

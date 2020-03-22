@@ -77,6 +77,7 @@
                 toolbar_mode: 'floating',
                 tinycomments_mode: 'embedded',
                 tinycomments_author: 'Author name',
+                entity_encoding : "raw",
                 });
             </script>
         </div>
