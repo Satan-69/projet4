@@ -31,8 +31,8 @@ class Backend
                 setcookie('pseudo', '', time() - 3600);
                 unset($_COOKIE['password']);
                 setcookie('password', '', time() - 3600);
-                session_unset();
                 session_destroy();
+                session_unset();
                 echo '<body onLoad="alert(\'Vous avez bien été déconnecté\')">';
                 echo '<meta http-equiv="refresh" content="0;URL=accueil.php">';
             }
