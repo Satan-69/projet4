@@ -84,7 +84,7 @@ class Frontend
 
     public function addComment($postId, $author, $comment)
     {
-        if (!empty($_POST['author']) && !empty($_POST['comment']))
+        if (isset($_POST['author']) && !empty($_POST['author']) && isset($_POST['comment']) && !empty($_POST['comment']))
         {
             $commentManager = new CommentManager;    
             $input = $commentManager->postComment($postId, $author, $comment);
@@ -92,6 +92,22 @@ class Frontend
         }
         else
             throw new Exception('Tous les champs du commentaire ne sont pas remplis');
+    }
+
+    public function mailto()
+    {
+        if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject'])  && isset($_POST['message'])
+            && !empty($_POST['subject']) && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['message']))
+            {
+                $to = 'hopfner.charles@gmail.com';
+                $subject = htmlspecialchars($_POST['subject']);
+                $msg = wordwrap(htmlspecialchars($_POST['message']), 70);
+                $headers = htmlspecialchars('Mail de ' . $_POST['name'] . ', ' .$_POST['email']);
+                mail($to, $subject, $msg, $headers);
+                header('Location: contact.php');
+            }
+        else
+            throw new Exception('Merci de remplir tous les champs');
     }
 }
 

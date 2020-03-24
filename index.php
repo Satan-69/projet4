@@ -34,6 +34,9 @@ try {
         else if (strpos($frontend->url, 'register.php')) 
             $frontend->register();
 
+        else if (strpos($backend->url, 'mailto.php'))
+            $frontend->mailto();
+
         else if (strpos($frontend->url, 'login.php'))
             $backend->login();
         

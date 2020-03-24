@@ -28,11 +28,12 @@
 
             <h3 class="m-4">Une question ? Une critique ? Une suggestion ? N'hésitez pas à m'en faire part.</h3>
 
-            <form action="#" method="post">
+            <form action="mailto.php" method="post">
                 <p><label for="name">Votre nom : <br><?=$form->input('name');?></label><br></p>
                 <p><label for="email">Votre email : <br><?=$form->input('email');?></label><br></p>
+                <p><label for="name">Sujet : <br><?=$form->input('subject');?></label><br></p>
                 <p>Votre message :</p>
-                <?=$form->textArea();?> <br>
+                <?=$form->textArea('message');?> <br>
                 <?=$form->submit();?>
                 <input type="hidden" name="recaptcha" id="recaptcha">
             </form>

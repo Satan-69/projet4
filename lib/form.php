@@ -12,9 +12,9 @@ class Form
         return '<input type="password" name="password">';
     }
 
-    public function textArea()
+    public function textArea($name)
     {
-        return '<textarea rows=10 cols=40 placeholder="Écrivez votre message ici."></textarea>';
+        return '<textarea name ="' . $name . '" rows=10 cols=40 placeholder="Écrivez votre message ici."></textarea>';
     }
 
     public function submit()
