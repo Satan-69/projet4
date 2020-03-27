@@ -19,7 +19,7 @@
                     <a class="nav-link" href="biographie.php">Ma Biographie</a>
                 </li>
             </ul>
-            <a class="btn btn-secondary bg-info font-weight-bold" href="logout.php">Se déconnecter</a>
+            <a id="logout" class="btn btn-secondary bg-info font-weight-bold" href="logout.php">Se déconnecter</a>
         </div>
     </nav>
 </div>

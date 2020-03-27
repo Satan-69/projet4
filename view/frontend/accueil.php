@@ -2,14 +2,13 @@
 ob_start();
 ?>
 <section id="presentation">
-    <img class="d-none d-lg-block"src="public/images/header2.jpg" alt="empty road and railroad at night">
+    <img id="banniere" class="d-none d-lg-block"src="public/images/header.jpg" alt="empty road and railroad at night">
     <div id="header-text">
-        <h1 class="display-4">Billet simple pour l'Alaska - Jean Forteroche</h1>
+        <h1 class="display-4 animated fadeInDown slow">Billet simple pour l'Alaska - Jean Forteroche</h1>
         <br>
-        <p class="lead">Adepte des nouvelles technologies, je vous propose un nouveau concept : celui de publier mon livre chapitre
+        <p class="lead animated fadeIn delay-2s slow">Adepte des nouvelles technologies, je vous propose un nouveau concept : celui de publier mon livre chapitre
         par chapitre, directement en ligne. Un peu comme une série en fait !</p>
-        <p>
-        <a class="lead" href="article.php?id=1"> Rendez-vous ici pour commencer l'histoire...</a></p>
+        <h2 class ="h1 mt-4 animated fadeIn delay-3s slow"><a href="article.php?id=1"> Rendez-vous ici pour commencer l'histoire...</a></h2>
         </div>
 </section>
 <hr class="hr-text m-5" data-content="Dernier article">

@@ -12,19 +12,31 @@ body {
     padding-bottom: 60px;
     /* Height of the footer */
 }
-h1, article h2, nav, #header-text, h3, .h3
-{
+
+h1, article h2, nav, #header-text, h3, .h3 {
     font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
 }
-nav
-{
+
+nav {
     font-size: 1.5em;
     background-color: #14203D;
 }
 
-header .navbar-brand img
-{
+.box {
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px black;
+    background-color: #ae8750;
+    padding: 20px;
+}
+
+header .navbar-brand img {
     height: 70px;
+}
+
+#banniere {
+    box-shadow: 0px 3px 8px black;
 }
 
 footer {
@@ -69,8 +81,7 @@ p {
     font-size: 1.2em;
 }
 
-.hr-shine
-{
+.hr-shine {
     border: 0;
     margin: 1.35em auto;
     max-width: 100%;
@@ -81,26 +92,18 @@ p {
 .shine {
     height: 20px;
     width: 75%;
-    background-image: radial-gradient(
-      farthest-side at 50% -50%,
-      hsla(0, 0%, 0%, 0.5),
-      hsla(0, 0%, 0%, 0));
-    position: relative; 
-  }
-  
-  .shine::before {
+    background-image: radial-gradient( farthest-side at 50% -50%, hsla(0, 0%, 0%, 0.5), hsla(0, 0%, 0%, 0));
+    position: relative;
+}
+
+.shine::before {
     height: 1px;
     position: absolute;
     top: -1px;
     left: 0;
     right: 0;
-    background-image: linear-gradient(
-      90deg,
-      hsla(0, 0%, 0%, 0),
-      hsla(0, 0%, 0%, 0.75) 50%,
-      hsla(0, 0%, 0%, 0));
-  } 
-  
+    background-image: linear-gradient( 90deg, hsla(0, 0%, 0%, 0), hsla(0, 0%, 0%, 0.75) 50%, hsla(0, 0%, 0%, 0));
+}
 
 #navbarSupportedContent {
     width: 60%;
@@ -127,18 +130,15 @@ textarea {
     max-width: 90%;
 }
 
-#presentation
-{
+#presentation {
     position: relative;
 }
 
-#presentation img
-{
+#presentation img {
     width: 100%;
 }
 
-#header-text
-{
+#header-text {
     position: absolute;
     top: 15%;
     left: 50%;
@@ -146,22 +146,64 @@ textarea {
     width: 90%;
 }
 
-#header-text .lead
-{
+#header-text .lead {
     margin-top: 5%;
     font-size: 1.5em;
     font-weight: bold;
 }
 
-@media all and (max-width: 992px)
+/* CONTACT FORM */
+.contactbox
 {
-    #header-text
-    {
+    width: 550px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px black;
+    background-color: white;
+}
+
+.textarea, .input {
+    color: rgb(78, 94, 114);
+    appearance: none;
+    outline: none;
+    border: none;
+    resize: none;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='24'><rect fill='rgb(229, 225, 187)' x='0' y='23' width='10' height='1'/></svg>");
+  }
+
+  ::placeholder
+  {
+      color: rgb(78, 94, 114);
+      opacity: 1;
+  }
+
+input[type="submit"] {
+    padding: 0.2rem 1rem;
+    border-radius: 5px;
+    border: white;   
+    background-color: white;
+    color:  rgb(78, 94, 114);
+    transition: background-color 0.3s;
+    font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+     }
+
+     input[type="submit"]:hover, input[type="submit"]:focus 
+{
+    outline: none;
+    background-color: rgba(78, 94, 114, 1);
+    color: white;
+}
+
+  /* MEDIA QUERIES */
+  @media all and (max-width: 992px) {
+    #header-text {
         position: relative;
     }
-
-    #header-text .lead
-    {
+    #header-text .lead {
         margin-top: 0;
     }
 }

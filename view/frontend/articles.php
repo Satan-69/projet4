@@ -1,7 +1,7 @@
 <?php $title = 'Les chapitres';
 ob_start();?>
-<h1 class="articles display-4 m-3">Les Chapitres</h1>
 
+<h1 class="display-4 m-4 animated fadeIn slow">Les Chapitres</h1>
 <?php
 while ($donnees = $req->fetch()) {
     if (strlen($donnees['content']) <= 400)
@@ -10,17 +10,20 @@ while ($donnees = $req->fetch()) {
     {
       $debut = substr($donnees['content'], 0, 400);
       $debut = substr($debut, 0, strrpos($debut, ' ')) . '...';
-    
       $content = $debut;
     }
 ?>
-<article class="article">
-    <h2 class="m-3"><a href="article.php?id=<?=$donnees['id']?>"><?=htmlspecialchars($donnees['title']);?></a></h2>
-    <p>Publié le <?=htmlspecialchars($donnees['date_posted']);?> , par <?=htmlspecialchars($donnees['author']);?></p>
+<div class="box">
+    <article class="article">
+        <h2 class="mb-3"><a href="article.php?id=<?=$donnees['id']?>"><?=htmlspecialchars($donnees['title']);?></a></h2>
+        <p>Publié le <?=htmlspecialchars($donnees['date_posted']);?> , par <?=htmlspecialchars($donnees['author']);?>
+        </p>
 
-    <p class="text-center"><?=nl2br(htmlspecialchars($content));?></p>
-    <hr class="hr-shine shine">
-</article>
+        <p class="text-center"><?=nl2br(htmlspecialchars($content));?></p>
+        
+    </article>
+</div>
+<hr class="hr-shine shine">
 <?php
 }
 $req->closeCursor();
@@ -28,4 +31,3 @@ $req->closeCursor();
 
 <?php $content = ob_get_clean();
 include 'template.php';
-

@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit = no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- CSS Animate -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <!-- CSS Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -24,19 +26,19 @@
     </header>
     <main class="text-center">
         <section id="contact">
-            <h1 class="display-4">Contactez moi !</h1>
+            <h1 class="m-4 display-4 animated fadeIn slow">Contactez moi !</h1>
 
             <h3 class="m-4">Une question ? Une critique ? Une suggestion ? N'hésitez pas à m'en faire part.</h3>
-
-            <form action="mailto.php" method="post">
-                <p><label for="name">Votre nom : <br><?=$form->input('name');?></label><br></p>
-                <p><label for="email">Votre email : <br><?=$form->input('email');?></label><br></p>
-                <p><label for="name">Sujet : <br><?=$form->input('subject');?></label><br></p>
-                <p>Votre message :</p>
-                <?=$form->textArea('message');?> <br>
-                <?=$form->submit();?>
-                <input type="hidden" name="recaptcha" id="recaptcha">
-            </form>
+            <div class="contactbox my-5">
+                <form action="mailto.php" method="post">
+                    <p class="m-2 text-left"><input class="input" type="text" name="name" placeholder="Votre nom"></p>
+                    <p class="m-2 text-left"><input class="input" type="email" name="email" placeholder="Votre email"></p>
+                    <p class="m-4"><input class="input" type="text" name="subject" placeholder="Votre sujet"></p>
+                    <textarea name="message" class="textarea" rows=10 cols=40 placeholder="Écrivez votre message ici."></textarea> <br>
+                    <p class="text-right m-4"><input type="submit" id="sendButton" value="Envoyer"></p>
+                    <input type="hidden" name="recaptcha" id="recaptcha">
+                </form>
+            </div>
         </section>
     </main>
     <footer>

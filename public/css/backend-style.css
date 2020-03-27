@@ -1,33 +1,25 @@
-
-body
-{
+body {
     background-color: #697D82;
     width: 100%;
     text-align: center;
-    padding-top : 95px;
+    padding-top: 95px;
 }
 
-
-
-.wrapper
-{
+.wrapper {
     display: flex;
     align-items: stretch;
 }
 
-nav
-{
+nav {
     background-color: #14203D;
     border-bottom: 1px solid white;
 }
 
-h1, h2, h3, h4, h5, h6, p, a
-{
+h1, h2, h3, h4, h5, h6, p, a {
     color: white;
 }
 
-nav, .sidebar-header
-{
+nav, .sidebar-header {
     height: 95px;
 }
 
@@ -41,38 +33,37 @@ nav, .sidebar-header
     margin-left: -250px;
 }
 
-#sidebar a
-{
+#sidebar a {
     padding: 20px;
 }
 
-#sidebar h4
-{
+#sidebar h4 {
     margin: 30px;
 }
 
-#sidebar hr
-{
+#sidebar hr {
     background-color: white;
 }
 
-header .navbar-brand img
-{
+header .navbar-brand img {
     height: 70px;
 }
 
-#content
+#logout
 {
+    position: absolute;
+    right: 3%;
+}
+
+#content {
     width: 100%;
 }
 
-.titleinput
-{
+.titleinput {
     width: 500px;
 }
 
-.hr-shine
-{
+.hr-shine {
     border: 0;
     margin: 1.35em auto;
     max-width: 100%;
@@ -83,14 +74,11 @@ header .navbar-brand img
 .shine {
     height: 20px;
     width: 75%;
-    background-image: radial-gradient(
-      farthest-side at 50% -50%,
-      hsla(0, 0%, 0%, 0.5),
-      hsla(0, 0%, 0%, 0));
-    position: relative; 
-  }
-  article
-  {
-      width: 85%;
-      margin: 0 auto;
-  }
+    background-image: radial-gradient( farthest-side at 50% -50%, hsla(0, 0%, 0%, 0.5), hsla(0, 0%, 0%, 0));
+    position: relative;
+}
+
+article {
+    width: 85%;
+    margin: 0 auto;
+}
