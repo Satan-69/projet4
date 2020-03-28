@@ -42,14 +42,10 @@
                     </ul>
                 </li>
                 <li>
-                    <hr>
-                    <h4>Commentaires</h4>
+                    <hr>    
                     <ul class="list-unstyled" id="comments-menu">
                         <li>
-                            <a href="#">Supprimer un commentaire</a>
-                        </li>
-                        <li>
-                            <a href="#">Éditer un commentaire</a>
+                            <a href="signaledComments.php">Commentaires signalés</a>
                         </li>
                     </ul>
                 </li>
