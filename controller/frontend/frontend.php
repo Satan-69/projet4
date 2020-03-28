@@ -97,7 +97,7 @@ class Frontend
     public function mailto()
     {
         if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject'])  && isset($_POST['message'])
-            && !empty($_POST['subject']) && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['message']))
+            && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message']))
             {
                 $to = 'hopfner.charles@gmail.com';
                 $subject = htmlspecialchars($_POST['subject']);
@@ -108,6 +108,13 @@ class Frontend
             }
         else
             throw new Exception('Merci de remplir tous les champs');
+    }
+
+    public function signalComment($id, $postId)
+    {
+        $commentManager = new CommentManager;
+        $commentManager->signal($id);
+        header('Location: article.php?id='.$postId);    
     }
 }
 

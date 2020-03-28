@@ -24,6 +24,8 @@ try {
             if (isset($_GET['action']) && $_GET['action'] == 'addComment')
                 $frontend->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
         }
+        else if (strpos($frontend->url, 'signalComment.php'))
+            $frontend->signalComment($_GET['id'], $_GET['postId']);
 
         else if (strpos($frontend->url, 'biographie.php')) 
             $frontend->biography();

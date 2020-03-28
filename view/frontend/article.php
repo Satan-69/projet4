@@ -5,7 +5,6 @@ ob_start();?>
 <article class="article">
     <h2 class="display-3"><?=htmlspecialchars($article['title']);?></h2>
     <p class="m-3">Publié le <?=htmlspecialchars($article['date_posted']);?> , par <?=htmlspecialchars($article['author']);?></p>
-
     <p><?=nl2br(htmlspecialchars($article['content']));?></p>
 </article>
 <hr>
@@ -15,12 +14,15 @@ ob_start();?>
 while ($comment = $comments->fetch()) {?>
     <p><strong><?=htmlspecialchars($comment['author'])?></strong>, le <?=$comment['date_posted']?> : </p>
     <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>
+    <form method="POST" action="signalComment.php?id=<?=$comment['id']?>&amp;postId=<?=$article['id']?>">
+        <input type="submit" value="Signaler">
+    </form>
     <?php
 }
 ?>
 </section>
 <section id="postComment" class="mt-4">
-    <form method="post" action="article.php?action=addComment&amp;id=<?=$article['id']?>">
+    <form method="POST" action="article.php?action=addComment&amp;id=<?=$article['id']?>">
         <p>
             <label for="author">Auteur : </label><br>
             <input type="text" name="author" id="author"><br>

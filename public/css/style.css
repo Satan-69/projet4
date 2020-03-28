@@ -153,8 +153,8 @@ textarea {
 }
 
 /* CONTACT FORM */
-.contactbox
-{
+
+.contactbox {
     width: 550px;
     margin: 0 auto;
     padding: 20px;
@@ -163,7 +163,7 @@ textarea {
     background-color: white;
 }
 
-.textarea, .input {
+textarea, .input {
     color: rgb(78, 94, 114);
     appearance: none;
     outline: none;
@@ -171,35 +171,34 @@ textarea {
     resize: none;
     background-color: transparent;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='24'><rect fill='rgb(229, 225, 187)' x='0' y='23' width='10' height='1'/></svg>");
-  }
+}
 
-  ::placeholder
-  {
-      color: rgb(78, 94, 114);
-      opacity: 1;
-  }
+::placeholder {
+    color: rgb(78, 94, 114);
+    opacity: 1;
+}
 
 input[type="submit"] {
     padding: 0.2rem 1rem;
     border-radius: 5px;
-    border: white;   
+    border: white;
     background-color: white;
-    color:  rgb(78, 94, 114);
+    color: rgb(78, 94, 114);
     transition: background-color 0.3s;
     font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
     font-size: 20px;
     font-weight: bold;
-     }
+}
 
-     input[type="submit"]:hover, input[type="submit"]:focus 
-{
+input[type="submit"]:hover, input[type="submit"]:focus {
     outline: none;
     background-color: rgba(78, 94, 114, 1);
     color: white;
 }
 
-  /* MEDIA QUERIES */
-  @media all and (max-width: 992px) {
+/* MEDIA QUERIES */
+
+@media all and (max-width: 992px) {
     #header-text {
         position: relative;
     }
