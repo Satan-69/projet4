@@ -19,9 +19,13 @@ ob_start();?>
 while ($comment = $comments->fetch()) {?>
     <p><strong><?=htmlspecialchars($comment['author'])?></strong>, le <?=htmlspecialchars($comment['date_posted'])?> : </p>
     <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>
+    <form method="POST" action="deleteComment.php?id=<?=$comment['id']?>">
+        <input type="submit" value="Supprimer">
+    </form>
     <?php
 }
 ?>
+
 </section>
 
 <?php

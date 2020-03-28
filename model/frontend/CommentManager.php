@@ -47,7 +47,7 @@ class CommentManager extends Manager
     public function getSignaledComments()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, author, comment, DATE_FORMAT(date_posted, \'%d/%m/%Y, %Hh%i\') as date_posted, DATE_FORMAT(date_signaled, \'%d/%m/%Y, %Hh%i\') as date_signaled FROM comments WHERE signaled = yes ORDER BY date_signaled DESC');
+        $req = $db->query('SELECT id, author, comment, DATE_FORMAT(date_posted, \'%d/%m/%Y, %Hh%i\') as date_posted, DATE_FORMAT(date_signaled, \'%d/%m/%Y, %Hh%i\') as date_signaled FROM comments WHERE signaled = \'yes\' ORDER BY date_signaled DESC');
 
         return $req;
     }

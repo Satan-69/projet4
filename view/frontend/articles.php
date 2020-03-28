@@ -13,7 +13,7 @@ while ($donnees = $req->fetch()) {
       $content = $debut;
     }
 ?>
-<div class="box">
+<div class="articleBox">
     <article class="article">
         <h2 class="mb-3"><a href="article.php?id=<?=$donnees['id']?>"><?=htmlspecialchars($donnees['title']);?></a></h2>
         <p>Publié le <?=htmlspecialchars($donnees['date_posted']);?> , par <?=htmlspecialchars($donnees['author']);?>

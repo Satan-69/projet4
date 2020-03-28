@@ -52,6 +52,12 @@ try {
         else if (strpos($backend->url, 'articleBackend.php'))
             $backend->articleBackend();
 
+        else if (strpos($backend->url, 'signaledComments.php'))
+            $backend->signaledComments();
+
+        else if (strpos($backend->url, 'deleteComment.php'))
+            $backend->deleteComment($_GET['id']);
+
         // écrire un nouvel article
         else if (strpos($backend->url, 'write.php'))
             $backend->write();

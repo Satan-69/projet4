@@ -74,6 +74,12 @@ class Backend
             }
         }
     }
+
+    public function badId()
+    {
+        echo '<body onLoad="alert(\'Mauvais identifiants !\')">';
+        echo '<meta http-equiv="refresh" content="0;URL=login.php">';
+    }
     
     public function dashboard()
     {
@@ -114,16 +120,10 @@ class Backend
                                     require 'view/backend/dashboard.php';
                                 }
                                 else
-                                {
-                                    echo '<body onLoad="alert(\'Mauvais identifiants !\')">';
-                                    echo '<meta http-equiv="refresh" content="0;URL=login.php">';
-                                }
+                                    $this->badId();
                             }
                             else
-                            {
-                                echo '<body onLoad="alert(\'Mauvais identifiants !\')">';
-                                echo '<meta http-equiv="refresh" content="0;URL=login.php">';
-                            }
+                                $this->badId();
                         }
                         else
                             throw new Exception('Veuillez renseigner votre nom et votre mot de passe');
@@ -141,17 +141,6 @@ class Backend
         }
     }
 
-    public function write()
-    {
-        if (isset($this->url))
-        {
-            if (isset($_SESSION['name']) && isset($_SESSION['password']))
-            require "view/backend/write.php";
-        }
-        else
-            throw new Exception('Pas d\'identifiants renseignés');
-    }
-
     public function articleBackend()
     {
         if (isset($this->url))
@@ -166,6 +155,41 @@ class Backend
                 require 'view/backend/articleBackend.php';
             }
         }
+    }
+
+    public function signaledComments()
+    {
+        if (isset($this->url))
+        {
+            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            {
+                $commentManager = new CommentManager;
+                $req = $commentManager->getSignaledComments();
+                
+                require 'view/backend/signaledcomments.php';
+            }
+        }
+    }
+
+    public function deleteComment($id)
+    {
+        if (isset($this->url))
+        {
+            $commentManager = new CommentManager;
+            $commentManager->deleteComment($id);
+            header('Location: signaledComments.php');
+        }
+    }
+
+    public function write()
+    {
+        if (isset($this->url))
+        {
+            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            require "view/backend/write.php";
+        }
+        else
+            throw new Exception('Pas d\'identifiants renseignés');
     }
 
     public function newArticle($title, $textcontent)

@@ -29,12 +29,12 @@
             <h1 class="m-4 display-4 animated fadeIn slow">Contactez moi !</h1>
 
             <h3 class="m-4">Une question ? Une critique ? Une suggestion ? N'hésitez pas à m'en faire part.</h3>
-            <div class="contactbox my-5">
+            <div class="box my-5">
                 <form action="mailto.php" method="post">
-                    <p class="m-2 text-left"><input class="input" type="text" name="name" placeholder="Votre nom"></p>
-                    <p class="m-2 text-left"><input class="input" type="email" name="email" placeholder="Votre email"></p>
-                    <p class="m-4"><input class="input" type="text" name="subject" placeholder="Votre sujet"></p>
-                    <textarea name="message" class="textarea" rows=10 cols=40 placeholder="Écrivez votre message ici."></textarea> <br>
+                    <p class="m-2 text-left"><input class="input" type="text" name="name" placeholder="Votre nom" required></p>
+                    <p class="m-2 text-left"><input class="input" type="email" name="email" placeholder="Votre email" required></p>
+                    <p class="m-4"><input class="input" type="text" name="subject" placeholder="Votre sujet" required></p>
+                    <textarea name="message" class="textarea" rows=10 cols=40 placeholder="Écrivez votre message ici." required></textarea> <br>
                     <p class="text-right m-4"><input type="submit" id="sendButton" value="Envoyer"></p>
                     <input type="hidden" name="recaptcha" id="recaptcha">
                 </form>
