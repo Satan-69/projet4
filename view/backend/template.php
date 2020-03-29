@@ -31,7 +31,6 @@
         <nav id="sidebar">
             <div class="sidebar-header">
                 <h3 class="my-3"><a href="dashboard.php">Administration</a></h3>
-                <hr>
             </div>
             <ul class="list-unstyled components">
                 <li>
@@ -41,8 +40,9 @@
                         </li>
                     </ul>
                 </li>
+                <br>
                 <li>
-                    <hr>    
+                       
                     <ul class="list-unstyled" id="comments-menu">
                         <li>
                             <a href="signaledComments.php">Commentaires signalés</a>

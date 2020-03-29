@@ -21,84 +21,94 @@ class Backend
             throw new Exception('invalid URL');
     }
 
+    private function checkingCookies()
+    {
+        if (isset($_COOKIE['pseudo']) && isset($_COOKIE['loggedin']) && $_COOKIE['loggedin'] == 'true')
+        {
+            $userManager = new UserManager();
+            $user = $userManager->getUser($_COOKIE['pseudo']);
+            if ($user)
+                if ($user['ranked'] == 'admin')
+                    return true;
+        }
+    }
+
     public function logout()
     {
         if (isset($this->url))
         {
-            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            if ($this->checkingCookies())
             {
                 unset($_COOKIE['pseudo']);
                 setcookie('pseudo', '', time() - 3600);
-                unset($_COOKIE['password']);
-                setcookie('password', '', time() - 3600);
+                unset($_COOKIE['loggedin']);
+                setcookie('loggedin', '', time() - 3600);
                 session_destroy();
                 session_unset();
                 echo '<body onLoad="alert(\'Vous avez bien été déconnecté\')">';
                 echo '<meta http-equiv="refresh" content="0;URL=accueil.php">';
             }
             else
-                throw new Exception('Pas d\'identifiants renseignés');
+                $this->loginView();
         }
+    }
+
+    private function loginView()
+    {
+        $form = new Form;
+        require 'view/frontend/login.php'; 
     }
 
     public function login()
     {
         if (isset($this->url))
         {
-            if (isset($_COOKIE['pseudo']) && isset($_COOKIE['password']))
-            {
-                $userManager = new UserManager();
-                $user = $userManager->getUser($_COOKIE['pseudo']);
-                if ($user)
-                {
-                    $name = $user['pseudo'];
-                    $password = $user['passwd'];
-
-                    if($name == $_COOKIE['pseudo'] && password_verify($_COOKIE['password'], $password))
-                    {                    
-                        $_SESSION['name'] = $_COOKIE['pseudo'];
-                        $_SESSION['password'] = $_COOKIE['password'];
-                        $this->dashboard();
-                    }
-                }
-                else 
-                {
-                    $form = new Form;
-                    require 'view/frontend/login.php';
-                }
-            }
+            if ($this->checkingCookies())
+                header('Location: dashboard.php');
             else 
-            {
-                $form = new Form;
-                require 'view/frontend/login.php';
-            }
+                $this->loginView();
         }
     }
 
-    public function badId()
+    private function badId()
     {
         echo '<body onLoad="alert(\'Mauvais identifiants !\')">';
         echo '<meta http-equiv="refresh" content="0;URL=login.php">';
+        exit();
+    }
+
+    private function dashboardView()
+    {
+        $articleManager = new ArticleManager;
+        $req = $articleManager->getArticles();
+        require 'view/backend/dashboard.php';
+    }
+
+    private function recaptcha()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recaptcha'])) 
+        {
+            // Build POST request:
+            $secret_key = '6LevuuIUAAAAALxQD3CTY5fkm1GksYPgjyqTCp6_';
+            $recaptcha_response = $_POST['recaptcha'];
+        
+            // Make and decode POST request:
+            $recaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $recaptcha_response);
+            $recaptcha = json_decode($recaptcha);
+        
+            // Take action based on the score returned:
+            if ($recaptcha->score >= 0.6) // run the login check
+            return true;
+        }
     }
     
     public function dashboard()
     {
         if (isset($this->url))
         {
-            if (!isset($_SESSION['name']) && !isset($_SESSION['password']))
+            if (!$this->checkingCookies())
             {
-                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recaptcha'])) 
-                {
-                    // Build POST request:
-                    $secret_key = '6LevuuIUAAAAALxQD3CTY5fkm1GksYPgjyqTCp6_';
-                    $recaptcha_response = $_POST['recaptcha'];
-                
-                    // Make and decode POST request:
-                    $recaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $recaptcha_response);
-                    $recaptcha = json_decode($recaptcha);
-                
-                    // Take action based on the score returned:
-                    if ($recaptcha->score >= 0.7) // run the login check
+                    if ($this->recaptcha())
                     {
                         if (isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['password']) && !empty($_POST['password']))
                         {
@@ -110,14 +120,9 @@ class Backend
                                 $password = $user['passwd'];
                                 if($name == $_POST['name'] && password_verify($_POST['password'], $password))
                                 {
-                                    $_SESSION['name'] = $_POST['name'];
-                                    $_SESSION['password'] = $_POST['password'];
-                                    setcookie('pseudo', $_SESSION['name'], time() + 365*24*60, null, null, false, true);
-                                    setcookie('password',$_SESSION['password'], time() + 365*24*60, null, null, false, true);
-                
-                                    $articleManager = new ArticleManager;
-                                    $req = $articleManager->getArticles();
-                                    require 'view/backend/dashboard.php';
+                                    setcookie('pseudo', $name, time() + 365*24*60, null, null, false, true);
+                                    setcookie('loggedin', 'true', time() + 365*24*60, null, null, false, true);
+                                    $this->dashboardView();
                                 }
                                 else
                                     $this->badId();
@@ -131,13 +136,8 @@ class Backend
                     else 
                         throw new Exception('robot');
                 }
-                else
-                    throw new Exception('Merci de vous réidentifier');   
-            }
             else
-                $articleManager = new ArticleManager;
-                $req = $articleManager->getArticles();
-                require 'view/backend/dashboard.php';
+                $this->dashboardView();
         }
     }
 
@@ -145,7 +145,7 @@ class Backend
     {
         if (isset($this->url))
         {
-            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            if ($this->checkingCookies())
             {
                 $articleManager = new ArticleManager;
                 $commentManager = new CommentManager;
@@ -161,7 +161,7 @@ class Backend
     {
         if (isset($this->url))
         {
-            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            if ($this->checkingCookies())
             {
                 $commentManager = new CommentManager;
                 $req = $commentManager->getSignaledComments();
@@ -185,18 +185,18 @@ class Backend
     {
         if (isset($this->url))
         {
-            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            if ($this->checkingCookies())
             require "view/backend/write.php";
         }
         else
-            throw new Exception('Pas d\'identifiants renseignés');
+            $this->loginView();
     }
 
     public function newArticle($title, $textcontent)
     {
         if (isset($this->url))
         {
-            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            if ($this->checkingCookies())
             {
                 if (isset($_POST['title']) && !empty($_POST['title']) && isset($_POST['textcontent']) && !empty($_POST['textcontent']))
                 {
@@ -208,7 +208,7 @@ class Backend
                     throw new Exception('Veuillez renseigner le titre ET le contenu !');
             }
             else
-                throw new Exception('Pas d\'identifiants renseignés');
+                $this->loginView();
         }
     }
 
@@ -216,7 +216,7 @@ class Backend
     {
         if (isset($this->url))
         {
-            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            if ($this->checkingCookies())
             {
                 if (isset($_GET['id']))
                 {
@@ -233,7 +233,7 @@ class Backend
                     throw new Exception('Pas d\'ID d\'article renseigné');
             }
             else
-                throw new Exception('Pas d\'identifiants renseignés');
+                $this->loginView();
         }
     }
 
@@ -241,7 +241,7 @@ class Backend
     {
         if (isset($this->url))
         {
-            if (isset($_SESSION['name']) && isset($_SESSION['password']))
+            if ($this->checkingCookies())
             {
                 $articleManager = new ArticleManager;
                 if(isset($_POST['delete']))
@@ -259,7 +259,7 @@ class Backend
                 }
             }
             else
-                throw new Exception('Pas d\'identifiants renseignés');
+                $this->loginView();
         }
     }
 

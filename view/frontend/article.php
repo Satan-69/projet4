@@ -11,7 +11,8 @@ ob_start();?>
 <hr>
 <!-- Display des commentaires -->
 <section id="comments" class="d-flex justify-content-around m-5">
-    <div class="border col-4">
+    <div class="col-4">
+        <h3 class="h2">Commentaires</h3>
         <?php
 while ($comment = $comments->fetch()) {?>
     <div class="commentBox m-4">
