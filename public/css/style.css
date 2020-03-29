@@ -36,7 +36,7 @@ footer {
     margin-top: auto;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, .nav-link {
+h1, h2, h3, h4, h6, p, a, .nav-link {
     color: white;
 }
 
@@ -115,8 +115,9 @@ p {
 
 .card {
     width: 80%;
-    max-width: 25rem;
+    max-width: 15rem;
     margin: 20px;
+    box-shadow: 2px 3px 3px black;
 }
 
 textarea {
