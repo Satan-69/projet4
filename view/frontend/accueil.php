@@ -26,27 +26,27 @@ ob_start();
 <section id="books">
     <div id="cards" class="d-flex flex-column flex-xl-row align-items-center justify-content-around">
         <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
+            <img src="public/images/lepalaisdelalune.jpg" class="card-img-top" alt="...">
+            <div class="card-body p-3">
                 <h5 class="card-title">Le Palais de la Lune</h5>
-                <p class="card-text text-dark">Éditions Actes Ouest <br> 19.90€</p>
-                <a href="#" class="btn btn-primary">Voir plus</a>
+                <p class="card-text text-dark small">Éditions Actes Ouest - 2018<br> 19.90€</p>
+                
             </div>
         </div>
         <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
+            <img src="public/images/alicesurlefil.jpg" class="card-img-top" alt="...">
+            <div class="card-body p-3">
                 <h5 class="card-title">Alice sur le fil</h5>
-                <p class="card-text text-dark">Éditions Actes Ouest <br> 19.90€</p>
-                <a href="#" class="btn btn-primary">Voir plus</a>
+                <p class="card-text text-dark small">Éditions Actes Ouest - 2015<br> 19.90€</p>
+                
             </div>
         </div>
         <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
+            <img src="public/images/lesrevesrouges.jpg" class="card-img-top" alt="...">
+            <div class="card-body p-3">
                 <h5 class="card-title">Les rêves rouges</h5>
-                <p class="card-text text-dark">Éditions Actes Ouest <br> 19.90€</p>
-                <a href="#" class="btn btn-primary">Voir plus</a>
+                <p class="card-text text-dark small">Éditions Actes Ouest - 2017<br> 19.90€</p>
+                
             </div>
         </div>
     </div>
