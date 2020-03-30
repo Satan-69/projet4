@@ -33,8 +33,8 @@ try {
         else if (strpos($frontend->url, 'contact.php')) 
             $frontend->contact();
 
-        else if (strpos($frontend->url, 'register.php')) 
-            $frontend->register();
+        else if (strpos($frontend->url, 'mentions.php')) 
+            $frontend->mentions();
 
         else if (strpos($backend->url, 'mailto.php'))
             $frontend->mailto();

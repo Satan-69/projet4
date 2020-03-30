@@ -73,13 +73,11 @@ class Frontend
         }
     }
 
-    public function register()
+    public function mentions()
     {
         if (isset($this->url))
-        {
-            $form = new Form;
-            require 'view/frontend/register.php';
-        }
+            require 'view/frontend/mentions.php';
+        
     }
 
     public function addComment($postId, $author, $comment)
@@ -94,20 +92,43 @@ class Frontend
             throw new Exception('Tous les champs du commentaire ne sont pas remplis');
     }
 
+    private function recaptcha()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recaptcha'])) 
+        {
+            // Build POST request:
+            $secret_key = '6LevuuIUAAAAALxQD3CTY5fkm1GksYPgjyqTCp6_';
+            $recaptcha_response = $_POST['recaptcha'];
+        
+            // Make and decode POST request:
+            $recaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $recaptcha_response);
+            $recaptcha = json_decode($recaptcha);
+        
+            // Take action based on the score returned:
+            if ($recaptcha->score >= 0.5) // run the login check
+            return true;
+        }
+    }
+
     public function mailto()
     {
-        if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject'])  && isset($_POST['message'])
-            && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message']))
-            {
-                $to = 'hopfner.charles@gmail.com';
-                $subject = htmlspecialchars($_POST['subject']);
-                $msg = wordwrap(htmlspecialchars($_POST['message']), 70);
-                $headers = htmlspecialchars('Mail de ' . $_POST['name'] . ', ' .$_POST['email']);
-                mail($to, $subject, $msg, $headers);
-                header('Location: contact.php');
-            }
+        if ($this->recaptcha())
+        {
+            if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject'])  && isset($_POST['message'])
+                && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message']))
+                {
+                    $to = 'hopfner.charles@gmail.com';
+                    $subject = htmlspecialchars($_POST['subject']);
+                    $msg = wordwrap(htmlspecialchars($_POST['message']), 70);
+                    $headers = htmlspecialchars('Mail de ' . $_POST['name'] . ', ' .$_POST['email']);
+                    mail($to, $subject, $msg, $headers);
+                    header('Location: contact.php');
+                }
+            else
+                throw new Exception('Merci de remplir tous les champs');
+        }
         else
-            throw new Exception('Merci de remplir tous les champs');
+            throw new Exception('robot');
     }
 
     public function signalComment($id, $postId)
