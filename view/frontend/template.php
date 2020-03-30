@@ -22,7 +22,7 @@
     <header>
         <?php include 'header.php';?>
     </header>
-    <main class="text-center">
+    <main class="text-center mb-5">
         <?=$content;?>
     </main>
     <footer>

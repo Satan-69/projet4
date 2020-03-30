@@ -16,7 +16,7 @@
                     <a class="nav-link" href="articles.php">Les Chapitres</a>
                 </li>
                 <li class="nav-item ml-lg-5">
-                    <a class="nav-link" href="biographie.php">Ma Biographie</a>
+                    <a class="nav-link" href="biography.php">Ma Biographie</a>
                 </li>
                 <li class="nav-item ml-lg-5">
                     <a class="nav-link" href="contact.php">Contact</a>

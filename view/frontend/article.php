@@ -19,7 +19,7 @@ while ($comment = $comments->fetch()) {?>
         <div>
             <p><strong><?=htmlspecialchars($comment['author'])?></strong>, le <?=$comment['date_posted']?> : </p>
             <form method="POST" action="signalComment.php?id=<?=$comment['id']?>&amp;postId=<?=$article['id']?>">
-                <input id="signalButton" type="submit" value="Signaler">
+                <input class="signalButton" type="submit" value="Signaler">
             </form>
         </div>
         <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>
