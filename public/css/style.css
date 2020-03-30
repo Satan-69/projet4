@@ -15,7 +15,7 @@ body {
     /* Height of the footer */
 }
 
-h1, h2, nav, #header-text, h3, .h3 {
+h1, h2, nav, #header-text, h3, .h3, ul {
     font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
 }
 
@@ -34,6 +34,7 @@ header .navbar-brand img {
 
 footer {
     margin-top: auto;
+    background-color: #14203D
 }
 
 h1, h2, h3, h4, h6, p, a, .nav-link {
@@ -206,7 +207,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     position: relative;
 }
 
-#signalButton {
+.signalButton {
     position: absolute;
     top: 0px;
     right: 5px;

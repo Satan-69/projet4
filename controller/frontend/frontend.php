@@ -61,7 +61,7 @@ class Frontend
     public function biography()
     {
         if (isset($this->url))
-            require 'view/frontend/biographie.php';
+            require 'view/frontend/biography.php';
     }
 
     public function contact()
@@ -78,6 +78,12 @@ class Frontend
         if (isset($this->url))
             require 'view/frontend/mentions.php';
         
+    }
+
+    public function sitemap()
+    {
+        if (isset($this->url))
+            require 'view/frontend/sitemap.php';
     }
 
     public function addComment($postId, $author, $comment)

@@ -27,7 +27,7 @@ try {
         else if (strpos($frontend->url, 'signalComment.php'))
             $frontend->signalComment($_GET['id'], $_GET['postId']);
 
-        else if (strpos($frontend->url, 'biographie.php')) 
+        else if (strpos($frontend->url, 'biography.php')) 
             $frontend->biography();
 
         else if (strpos($frontend->url, 'contact.php')) 
@@ -35,6 +35,9 @@ try {
 
         else if (strpos($frontend->url, 'mentions.php')) 
             $frontend->mentions();
+
+        else if (strpos($frontend->url, 'sitemap.php')) 
+            $frontend->sitemap();
 
         else if (strpos($backend->url, 'mailto.php'))
             $frontend->mailto();
