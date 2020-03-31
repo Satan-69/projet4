@@ -86,13 +86,19 @@ class Frontend
             require 'view/frontend/sitemap.php';
     }
 
+    public function error()
+    {
+        if (isset($this->url))
+            require 'view/frontend/error.php';
+    }
+    
     public function addComment($postId, $author, $comment)
     {
         if (isset($_POST['author']) && !empty($_POST['author']) && isset($_POST['comment']) && !empty($_POST['comment']))
         {
             $commentManager = new CommentManager;    
             $input = $commentManager->postComment($postId, $author, $comment);
-            header('Location: article.php?id='.$postId);
+            echo '<script> self.location.replace("article.php?id='.$postId.'");</script>';
         }
         else
             throw new Exception('Tous les champs du commentaire ne sont pas remplis');

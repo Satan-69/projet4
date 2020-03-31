@@ -10,11 +10,12 @@ ob_start();?>
 </article>
 <hr>
 <!-- Display des commentaires -->
-<section id="comments" class="d-flex justify-content-around m-5">
-    <div class="col-4">
+<section id="comments" class="d-flex flex-lg-row flex-column justify-content-around m-5">
+    <div class="col-12 col-lg-6">
         <h3 class="h2">Commentaires</h3>
         <?php
-while ($comment = $comments->fetch()) {?>
+if ($comments->rowCount() > 0) {
+    while ($comment = $comments->fetch()) {?>
     <div class="commentBox m-4">
         <div>
             <p><strong><?=htmlspecialchars($comment['author'])?></strong>, le <?=$comment['date_posted']?> : </p>
@@ -25,10 +26,12 @@ while ($comment = $comments->fetch()) {?>
         <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>
         </div>
         <?php
-}
-?>
+    }
+} else {?>
+    <h4 class="h3">Aucun commentaire</h4>
+<?php } ?>
     </div>
-    <div id="postComment" class="col-4">
+    <div id="postComment" class="col-12 col-lg-6 mt-5 mt-lg-0">
         <form class="box" method="POST" action="article.php?action=addComment&amp;id=<?=$article['id']?>">
             <h3 class="h2">Laisser un commentaire</h3>
             <p class="text-left"><input maxlength="15" class="input mt-3" type="text" name="author" id="author" placeholder="votre nom" required></p>
