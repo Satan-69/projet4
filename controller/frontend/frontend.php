@@ -98,7 +98,8 @@ class Frontend
         {
             $commentManager = new CommentManager;    
             $input = $commentManager->postComment($postId, $author, $comment);
-            echo '<script> self.location.replace("article.php?id='.$postId.'");</script>';
+            header('Location: articles.php?id='.$postId);
+            exit();
         }
         else
             throw new Exception('Tous les champs du commentaire ne sont pas remplis');
@@ -129,11 +130,18 @@ class Frontend
             if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject'])  && isset($_POST['message'])
                 && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message']))
                 {
+                    $encoding = "utf-8";
                     $to = 'hopfner.charles@gmail.com';
+                    $name = htmlspecialchars($_POST['name']);
+                    $email = htmlspecialchars($_POST['email']);
                     $subject = htmlspecialchars($_POST['subject']);
                     $msg = wordwrap(htmlspecialchars($_POST['message']), 70);
-                    $headers = htmlspecialchars('Mail de ' . $_POST['name'] . ', ' .$_POST['email']);
-                    mail($to, $subject, $msg, $headers);
+                    $header = "Content-type: text/plain; charset=".$encoding."\n";
+                    $header .= "From: ".$name." <".$email.">\n";
+                    $header .= "MIME-Version: 1.0\n";
+                    $header .= "Content-Transfer-Encoding: 8bit\n";
+                    $header .= "Date: ".date("r (T)")."\n";
+                    mail($to, $subject, $msg, $header);
                     header('Location: contact.php');
                 }
             else

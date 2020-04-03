@@ -29,7 +29,7 @@ if ($comments->rowCount() > 0) {
     }
 } else {?>
     <h4 class="h3">Aucun commentaire</h4>
-<?php } ?>
+<?php }?>
     </div>
     <div id="postComment" class="col-12 col-lg-6 mt-5 mt-lg-0">
         <form class="box" method="POST" action="article.php?action=addComment&amp;id=<?=$article['id']?>">

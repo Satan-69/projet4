@@ -8,7 +8,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="accueil.php">Accueil</a>
                 </li>
                 <li class="nav-item ml-lg-5">
