@@ -29,7 +29,6 @@ ob_start();
             <div class="card-body p-3">
                 <h5 class="card-title">Le Palais de la Lune</h5>
                 <p class="card-text text-dark small">Éditions Actes Ouest - 2018<br> 19.90€</p>
-                
             </div>
         </div>
         <div class="card">

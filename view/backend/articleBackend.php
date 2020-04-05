@@ -22,7 +22,7 @@ while ($comment = $comments->fetch()) {?>
         <div>
             <p><strong><?=htmlspecialchars($comment['author'])?></strong>, le <?=$comment['date_posted']?> : </p>
             <form method="POST" action="deleteComment.php?id=<?=$comment['id']?>&amp;postId=<?=$article['id']?>">
-                <input class="signalButton deleteButton" type="submit" value="Supprimer">
+                <input name="articleBackend" class="signalButton deleteButton" type="submit" value="Supprimer">
             </form>
         </div>
         <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>

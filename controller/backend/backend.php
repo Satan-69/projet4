@@ -177,7 +177,10 @@ class Backend
         {
             $commentManager = new CommentManager;
             $commentManager->deleteComment($id);
-            header('Location: signaledComments.php');
+            if (isset($_POST['articleBackend']))
+                header('Location: articleBackend.php?id='.$_GET['postId']);
+            else if (isset($_POST['signaledComments']))
+                header('Location: signaledComments.php');
         }
     }
 
@@ -187,6 +190,23 @@ class Backend
         {
             if ($this->checkingCookies())
             require "view/backend/write.php";
+        }
+        else
+            $this->loginView();
+    }
+
+    public function articlesBackend()
+    {
+        if (isset($this->url))
+        {
+            if ($this->checkingCookies()) {
+            $articleManager = new ArticleManager;
+            $req = $articleManager->getArticles();
+
+            require "view/backend/articlesBackend.php";
+            }
+            else
+                $this->loginView();
         }
         else
             $this->loginView();

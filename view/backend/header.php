@@ -13,10 +13,7 @@
                     <a class="nav-link" href="accueil.php">Accueil</a>
                 </li>
                 <li class="nav-item ml-lg-5">
-                    <a class="nav-link" href="articles.php">Les Chapitres</a>
-                </li>
-                <li class="nav-item ml-lg-5">
-                    <a class="nav-link" href="biographie.php">Ma Biographie</a>
+                    <a class="nav-link" href="articlesBackend.php">Les Chapitres</a>
                 </li>
             </ul>
             <a id="logout" class="btn btn-secondary bg-info font-weight-bold" href="logout.php">Se déconnecter</a>

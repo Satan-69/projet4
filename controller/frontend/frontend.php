@@ -98,7 +98,7 @@ class Frontend
         {
             $commentManager = new CommentManager;    
             $input = $commentManager->postComment($postId, $author, $comment);
-            header('Location: articles.php?id='.$postId);
+            header('Location: article.php?id='.$postId);
             exit();
         }
         else

@@ -12,8 +12,8 @@ ob_start();
         <div class="commentBox m-4 col-4">
             <div>
                 <p><strong><?=htmlspecialchars($comment['author'])?></strong>, le <?=$comment['date_posted']?> : </p>
-                <form method="POST" action="deleteComment.php?id=<?=$comment['id']?>&amp;postId=<?=$article['id']?>">
-                    <input id="signalButton" class="deleteButton" type="submit" value="Supprimer">
+                <form method="POST" action="deleteComment.php?id=<?=$comment['id']?>">
+                    <input name="signaledComments" class="signalButton deleteButton" type="submit" value="Supprimer">
                 </form>
             </div>
             <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>

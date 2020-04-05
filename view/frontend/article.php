@@ -1,6 +1,6 @@
-<?php $title = htmlspecialchars($article['title']);
-ob_start();?>
-
+<?php ob_start();
+$title = htmlspecialchars($article['title']);
+?>
 <!-- Display de l'article -->
 <article class="article">
     <h2 class="display-3"><?=htmlspecialchars($article['title']);?></h2>
@@ -11,21 +11,21 @@ ob_start();?>
 <hr>
 <!-- Display des commentaires -->
 <section id="comments" class="d-flex flex-lg-row flex-column justify-content-around m-5">
-    <div class="col-12 col-lg-6">
+    <div id="getComments" class="col-12 col-lg-6">
         <h3 class="h2">Commentaires</h3>
         <?php
 if ($comments->rowCount() > 0) {
     while ($comment = $comments->fetch()) {?>
-    <div class="commentBox m-4">
-        <div>
-            <p><strong><?=htmlspecialchars($comment['author'])?></strong>, le <?=$comment['date_posted']?> : </p>
-            <form method="POST" action="signalComment.php?id=<?=$comment['id']?>&amp;postId=<?=$article['id']?>">
-                <input class="signalButton" type="submit" value="Signaler">
-            </form>
+        <div class="commentBox m-4">
+            <div>
+                <p><strong><?=htmlspecialchars($comment['author'])?></strong>, le <?=$comment['date_posted']?> : </p>
+                <form method="POST" action="signalComment.php?id=<?=$comment['id']?>&amp;postId=<?=$article['id']?>">
+                    <input class="signalButton" type="submit" value="Signaler">
+                </form>
+            </div>
+            <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>
         </div>
-        <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>
-        </div>
-        <?php
+<?php
     }
 } else {?>
     <h4 class="h3">Aucun commentaire</h4>
@@ -43,3 +43,4 @@ if ($comments->rowCount() > 0) {
 <?php
 $content = ob_get_clean();
 require 'template.php';
+

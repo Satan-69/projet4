@@ -39,17 +39,20 @@ try {
         else if (strpos($frontend->url, 'sitemap.php')) 
             $frontend->sitemap();
 
-        else if (strpos($backend->url, 'mailto.php'))
+        else if (strpos($frontend->url, 'mailto.php'))
             $frontend->mailto();
 
-        else if (strpos($frontend->url, 'login.php'))
+        else if (strpos($backend->url, 'login.php'))
             $backend->login();
-        
+
         else if (strpos($backend->url, 'logout.php'))
             $backend->logout();
 
         else if (strpos($backend->url, 'dashboard.php'))
             $backend->dashboard();
+
+        else if (strpos($backend->url, 'articlesBackend.php'))
+            $backend->articlesBackend();
 
         //View back end de l'article (avec les boutons supprimer et éditer)
         else if (strpos($backend->url, 'articleBackend.php'))
