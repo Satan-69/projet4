@@ -2,6 +2,7 @@
 ob_start();?>
 
 <h1 class="display-4 m-4 animated fadeIn slow">Les Chapitres</h1>
+<!-- Boucle qui réduit l'affichage à 500 caractères max -->
 <?php
 while ($donnees = $req->fetch()) {
     if (strlen($donnees['content']) <= 500)
@@ -13,6 +14,7 @@ while ($donnees = $req->fetch()) {
       $content = $debut;
     }
 ?>
+<!-- Display de l'article -->
 <hr class="style-seven">  
 <div class="articleBox animated fadeIn slow">
     <article class="article">

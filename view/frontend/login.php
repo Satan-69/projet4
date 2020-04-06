@@ -32,6 +32,7 @@
             <p><input type="submit" class="m-4" value="Se connecter"></p>
             <input type="hidden" name="recaptcha" id="recaptcha">
         </form>
+        <div id="blank"></div>
     </main>
     <footer>
         <?php include 'footer.php';?>
