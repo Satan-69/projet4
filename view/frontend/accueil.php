@@ -37,6 +37,7 @@ ob_start();
     </article>
 </section>
 <!-- Affiche les autres livres de Jean Forteroche -->
+<div id="anchorBooks"></div>
 <hr class="hr-text m-5" data-content="Mes autres romans">
 <section id="books">
     <div id="cards" class="d-flex flex-column flex-xl-row align-items-center justify-content-around">
@@ -68,8 +69,5 @@ ob_start();
         </div>
     </div>
 </section>
-
-<hr class="hr-text">
-
 <?php $content = ob_get_clean();
 require 'template.php';

@@ -258,4 +258,10 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     #header-text .lead {
         margin-top: 0;
     }
+    #anchorBooks {
+        height: 70px;  
+    }
+    #contactForm {
+        width: 90%;
+    }
 }

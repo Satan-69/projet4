@@ -22,8 +22,8 @@ ob_start();
 <p> En 2020, il décide de s'essayer à un autre style d'écriture, et crée ce site sur lequel il publie son nouveau roman
     chapitre par chapitre : <a href="chapitres.php"><u>Billet simple pour l'Alaska</u></a>.
 </p><p>Il a reçu le grand prix des lecteurs de "Elle"
-    pour son deuxième roman <a href="accueil.php?#books"><u>Alice sur le fil</u></a> en 2015 et le prix Maison de la
-    presse pour <a href="accueil.php?#books"><u>Le Palais de la lune</u></a> en 2018.
+    pour son deuxième roman <a href="accueil.php?#anchorBooks"><u>Alice sur le fil</u></a> en 2015 et le prix Maison de la
+    presse pour <a href="accueil.php?#anchorBooks"><u>Le Palais de la lune</u></a> en 2018.
 </p>
 <hr class="hr-text m-5" data-content="Bibliographie">
 <ul id="booktypes" class="list-unstyled">
