@@ -120,7 +120,7 @@ class Backend
                 $recaptcha = json_decode($recaptcha);
             
                 // Take action based on the score returned:
-                if ($recaptcha->score >= 1) // run the login check
+                if ($recaptcha->score >= 0.5) // run the login check
                     return true;
             }
     }
