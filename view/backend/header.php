@@ -1,6 +1,7 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg fixed-top">
-        <a class="navbar-brand" href="accueil.php"><img src="public/images/logoJF.png" alt="logo de Jean Forteroche"></a> <a class="nav-link" id="homelink" href="accueil.php">Accueil</a>
+        <a class="navbar-brand" href="accueil.php"><img src="public/images/logoJF.png"
+                alt="logo de Jean Forteroche"></a> <a class="nav-link" id="homelink" href="accueil.php">Accueil</a>
         <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -8,7 +9,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto"> 
+            <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="dashboard.php">Administration</a>
                 </li>

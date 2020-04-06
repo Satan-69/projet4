@@ -27,7 +27,7 @@
     <header>
         <?php include "header.php"; ?>
     </header>
-        <main id="content">
+        <main>
             <?=$content?>
         </main>
   

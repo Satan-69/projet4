@@ -1,4 +1,5 @@
 /* NAVBAR */
+
 header .navbar-brand img {
     height: 70px;
 }
@@ -7,38 +8,34 @@ header .navbar-brand img {
     position: absolute;
     left: 70px;
 }
-#logout
-{
+
+#logout {
     position: absolute;
     right: 3%;
 }
 
-#content {
-    width: 100%;
+/* DASHBOARD */
+
+.adminBox {
+    width: 500px;
 }
+
+.adminBox a {
+    color: rgb(78, 94, 114);
+    font-size: 1.5rem;
+    font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
+}
+
+a.red {
+    color: red;
+}
+
+/* WRITE AND UPDATE ARTICLE */
 
 .titleinput {
     width: 500px;
 }
 
 input.deleteButton {
-    color: red;
-}
-
-/* DASHBOARD */
-
-
-.adminBox {
-    width: 500px;
-}
-
-
-.adminBox a{
-    color: rgb(78, 94, 114);
-    font-size: 1.5rem;
-    font-family: 'Dancing Script', Arial, Helvetica, sans-serif;
-}
-
-a.red{
     color: red;
 }

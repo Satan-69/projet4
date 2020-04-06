@@ -8,6 +8,7 @@ try {
     $backend = new Backend;
     if (isset($frontend->url)) 
     {
+        // ROUTES POUR LE FRONT
         if (strpos($frontend->url,'accueil.php')) 
             $frontend->home();
             
@@ -16,10 +17,7 @@ try {
 
         else if (strpos($frontend->url, 'article.php'))
         {
-            if (isset($_GET['id']) && $_GET['id'] > 0) 
                 $frontend->article(); 
-            else
-                throw new Exception('Aucun ID d\'article envoyé'); 
             // Si l'utilisateur poste un commentaire sur un article
             if (isset($_GET['action']) && $_GET['action'] == 'addComment')
                 $frontend->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
@@ -41,7 +39,11 @@ try {
 
         else if (strpos($frontend->url, 'mailto.php'))
             $frontend->mailto();
+        
+        else if (strpos($frontend->url, 'error.php'))
+            $frontend->error($e);
 
+        // ROUTES POUR LE BACKOFFICE
         else if (strpos($backend->url, 'login.php'))
             $backend->login();
 
@@ -54,8 +56,7 @@ try {
         else if (strpos($backend->url, 'articlesBackend.php'))
             $backend->articlesBackend();
 
-        //View back end de l'article (avec les boutons supprimer et éditer)
-        else if (strpos($backend->url, 'articleBackend.php'))
+         else if (strpos($backend->url, 'articleBackend.php'))
             $backend->articleBackend();
 
         else if (strpos($backend->url, 'signaledComments.php'))
@@ -64,7 +65,6 @@ try {
         else if (strpos($backend->url, 'deleteComment.php'))
             $backend->deleteComment($_GET['id']);
 
-        // écrire un nouvel article
         else if (strpos($backend->url, 'write.php'))
             $backend->write();
 
@@ -72,19 +72,17 @@ try {
         else if (strpos($backend->url, 'newArticle.php'))
             $backend->newArticle($_POST['title'], $_POST['textcontent']);
 
-        // Mettre à jour l'article
         else if (strpos($backend->url, 'update.php'))
             $backend->update($_POST['title'], $_POST['textcontent'], $_GET['id']);
 
-        // Supprimer ou éditer un article
         else if (strpos($backend->url, 'modify.php'))
             $backend->modify();
 
-        // Par défaut, on charge la page d'accueil
+        // PAR DEFAULT, CHARGEMENT DE LA PAGE D'ACCUEIL
         else
             $frontend->home();
     }
 } 
 catch (Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
+    $frontend->error($e);
 }

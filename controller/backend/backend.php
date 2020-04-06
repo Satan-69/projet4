@@ -14,14 +14,41 @@ class Backend
     }
 
     public function getUrl()
-    {
-        $request = $_SERVER['REQUEST_URI'];
-        if (isset($request) && !empty($request))
-            $this->url = $request;
-        else
-            throw new Exception('invalid URL');
+    {   
+        try {
+            $request = $_SERVER['REQUEST_URI'];
+            if (isset($request) && !empty($request))
+                $this->url = $request;
+            else
+                throw new Exception('404');
+        } catch (Excpetion $e) {
+            $this->error($e);
+        }
     }
 
+    public function error($e)
+    {
+        if (isset($this->url))
+        {
+            $message = $e->getMessage();
+            if ($message == '404')
+                $e = 'La page demandée n\'existe pas huhu';
+            else if ($message == 'emptyInputs')
+                $e = 'Tous les champs du commentaire ne sont pas remplis'; 
+            else if ($message == 'robot')
+                $e = 'you are a robot';
+
+            require 'view/frontend/error.php';
+        }
+    }
+
+    private function badId()
+    {
+        echo '<body onLoad="alert(\'Mauvais identifiants !\')">';
+        echo '<meta http-equiv="refresh" content="0;URL=login.php">';
+        exit();
+    }
+    
     private function checkingCookies()
     {
         if (isset($_COOKIE['pseudo']) && isset($_COOKIE['loggedin']) && $_COOKIE['loggedin'] == 'true')
@@ -71,13 +98,6 @@ class Backend
         }
     }
 
-    private function badId()
-    {
-        echo '<body onLoad="alert(\'Mauvais identifiants !\')">';
-        echo '<meta http-equiv="refresh" content="0;URL=login.php">';
-        exit();
-    }
-
     private function dashboardView()
     {
         $articleManager = new ArticleManager;
@@ -89,35 +109,37 @@ class Backend
 
     private function recaptcha()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recaptcha'])) 
-        {
-            // Build POST request:
-            $secret_key = '6LevuuIUAAAAALxQD3CTY5fkm1GksYPgjyqTCp6_';
-            $recaptcha_response = $_POST['recaptcha'];
-        
-            // Make and decode POST request:
-            $recaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $recaptcha_response);
-            $recaptcha = json_decode($recaptcha);
-        
-            // Take action based on the score returned:
-            if ($recaptcha->score >= 0.6) // run the login check
-            return true;
-        }
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recaptcha'])) 
+            {
+                // Build POST request:
+                $secret_key = '6LevuuIUAAAAALxQD3CTY5fkm1GksYPgjyqTCp6_';
+                $recaptcha_response = $_POST['recaptcha'];
+            
+                // Make and decode POST request:
+                $recaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $recaptcha_response);
+                $recaptcha = json_decode($recaptcha);
+            
+                // Take action based on the score returned:
+                if ($recaptcha->score >= 1) // run the login check
+                    return true;
+            }
     }
-    
+    // Fonction qui checke le login d'admin, et si il est bon, crée les cookies correspondants et redirige sur le dashboard. 
     public function dashboard()
     {
         if (isset($this->url))
         {
+            // Si checkingCookies return true, redirige direct sur le dashboard
             if (!$this->checkingCookies())
-            {
+            {   
+                try {
                     if ($this->recaptcha())
                     {
                         if (isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['password']) && !empty($_POST['password']))
                         {
                             $userManager = new UserManager();
                             $user = $userManager->getUser($_POST['name']);
-                            if ($user)
+                            if ($user) // On checke si l'user existe bien dans la db
                             {
                                 $name = $user['pseudo'];
                                 $password = $user['passwd'];
@@ -134,11 +156,15 @@ class Backend
                                 $this->badId();
                         }
                         else
-                            throw new Exception('Veuillez renseigner votre nom et votre mot de passe');
+                            $this->badId();
                     }
                     else 
                         throw new Exception('robot');
+                } catch(Exception $e)
+                {
+                    $this->error($e);
                 }
+            }
             else
                 $this->dashboardView();
         }
@@ -240,20 +266,24 @@ class Backend
         if (isset($this->url))
         {
             if ($this->checkingCookies())
-            {
-                if (isset($_GET['id']))
-                {
-                    if (isset($_POST['title']) && !empty($_POST['title']) && isset($_POST['textcontent']) && !empty($_POST['textcontent']))
+            {   
+                try {
+                    if (isset($_GET['id']))
                     {
-                        $articleManager = new ArticleManager;
-                        $input = $articleManager->updateArticle($title, strip_tags($textcontent), $id);
-                        header('Location: articlesBackend.php');
+                        if (isset($_POST['title']) && !empty($_POST['title']) && isset($_POST['textcontent']) && !empty($_POST['textcontent']))
+                        {
+                            $articleManager = new ArticleManager;
+                            $input = $articleManager->updateArticle($title, strip_tags($textcontent), $id);
+                            header('Location: articlesBackend.php');
+                        }
+                        else
+                            throw new Exception('emptyInputs');
                     }
                     else
-                        throw new Exception('Veuillez renseigner le titre ET le contenu !');
+                        throw new Exception('404');
+                } catch(Exception $e) {
+                    $this->error($e);
                 }
-                else
-                    throw new Exception('Pas d\'ID d\'article renseigné');
             }
             else
                 $this->loginView();

@@ -15,12 +15,32 @@ class Frontend
     }
 
     public function getUrl()
+    {   
+        try {
+            $request = $_SERVER['REQUEST_URI'];
+            if (isset($request) && !empty($request))
+                $this->url = $request;
+            else
+                throw new Exception('404');
+        } catch (Excpetion $e) {
+            $this->error($e);
+        }
+    }
+
+    public function error($e)
     {
-        $request = $_SERVER['REQUEST_URI'];
-        if (isset($request) && !empty($request))
-            $this->url = $request;
-        else
-            throw new Exception('invalid URL');
+        if (isset($this->url))
+        {   
+            $message = $e->getMessage();
+            if ($message == '404')
+                $e = 'La page demandée n\'existe pas.';
+            else if ($message == 'emptyInputs')
+                $e = 'Tous les champs du commentaire ne sont pas remplis.'; 
+            else if ($message == 'robot')
+                $e = 'you are a robot';
+
+            require 'view/frontend/error.php';
+        }
     }
 
     public function home()
@@ -49,12 +69,19 @@ class Frontend
     {
         if (isset($this->url))
         {
-            $articleManager = new ArticleManager;
-            $commentManager = new CommentManager;
-            $article = $articleManager->getArticle($_GET['id']);
-            $comments = $commentManager->getComments($_GET['id']);
+            try {
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $articleManager = new ArticleManager;
+                $commentManager = new CommentManager;
+                $article = $articleManager->getArticle($_GET['id']);
+                $comments = $commentManager->getComments($_GET['id']);
 
-            require 'view/frontend/article.php';
+                require 'view/frontend/article.php';
+                }  else
+                    throw new Exception('404');
+            } catch(Exception $e) {
+                $this->error($e);
+            }
         }
     }
 
@@ -85,70 +112,76 @@ class Frontend
         if (isset($this->url))
             require 'view/frontend/sitemap.php';
     }
-
-    public function error()
-    {
-        if (isset($this->url))
-            require 'view/frontend/error.php';
-    }
     
     public function addComment($postId, $author, $comment)
     {
-        if (isset($_POST['author']) && !empty($_POST['author']) && isset($_POST['comment']) && !empty($_POST['comment']))
-        {
-            $commentManager = new CommentManager;    
-            $input = $commentManager->postComment($postId, $author, $comment);
-            header('Location: article.php?id='.$postId);
-            exit();
+        try {
+            if (isset($_POST['author']) && !empty($_POST['author']) && isset($_POST['comment']) && !empty($_POST['comment']))
+            {
+                $commentManager = new CommentManager;    
+                $input = $commentManager->postComment($postId, $author, $comment);
+                header('Location: article.php?id='.$postId);
+                exit();
+            }
+            else
+                throw new Exception('emptyInputs');
+        } catch(Exception $e) {
+            $this->error($e);
         }
-        else
-            throw new Exception('Tous les champs du commentaire ne sont pas remplis');
     }
-
+    // Fonction qui fait appel à la vérification de l'utilisateur (si robot ou non) par le service de recaptcha de Google
     private function recaptcha()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recaptcha'])) 
-        {
-            // Build POST request:
-            $secret_key = '6LevuuIUAAAAALxQD3CTY5fkm1GksYPgjyqTCp6_';
-            $recaptcha_response = $_POST['recaptcha'];
-        
-            // Make and decode POST request:
-            $recaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $recaptcha_response);
-            $recaptcha = json_decode($recaptcha);
-        
-            // Take action based on the score returned:
-            if ($recaptcha->score >= 0.5) // run the login check
-            return true;
+        try {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['recaptcha'])) 
+            {
+                // Build POST request:
+                $secret_key = '6LevuuIUAAAAALxQD3CTY5fkm1GksYPgjyqTCp6_';
+                $recaptcha_response = $_POST['recaptcha'];
+            
+                // Make and decode POST request:
+                $recaptcha = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret_key . '&response=' . $recaptcha_response);
+                $recaptcha = json_decode($recaptcha);
+            
+                // Take action based on the score returned:
+                if ($recaptcha->score >= 0.5) // run the login check
+                    return true;
+                else
+                    throw new Exception('robot');
+            }
+        } catch(Exception $e) {
+            $this->error($e);
         }
     }
 
     public function mailto()
     {
-        if ($this->recaptcha())
-        {
-            if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject'])  && isset($_POST['message'])
-                && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message']))
-                {
-                    $encoding = "utf-8";
-                    $to = 'hopfner.charles@gmail.com';
-                    $name = htmlspecialchars($_POST['name']);
-                    $email = htmlspecialchars($_POST['email']);
-                    $subject = htmlspecialchars($_POST['subject']);
-                    $msg = wordwrap(htmlspecialchars($_POST['message']), 70);
-                    $header = "Content-type: text/plain; charset=".$encoding."\n";
-                    $header .= "From: ".$name." <".$email.">\n";
-                    $header .= "MIME-Version: 1.0\n";
-                    $header .= "Content-Transfer-Encoding: 8bit\n";
-                    $header .= "Date: ".date("r (T)")."\n";
-                    mail($to, $subject, $msg, $header);
-                    header('Location: contact.php');
-                }
-            else
-                throw new Exception('Merci de remplir tous les champs');
+        try {
+            if ($this->recaptcha())
+            {
+                if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['subject'])  && isset($_POST['message'])
+                    && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['message']))
+                    {
+                        $encoding = "utf-8";
+                        $to = 'hopfner.charles@gmail.com';
+                        $name = htmlspecialchars($_POST['name']);
+                        $email = htmlspecialchars($_POST['email']);
+                        $subject = htmlspecialchars($_POST['subject']);
+                        $msg = wordwrap(htmlspecialchars($_POST['message']), 70);
+                        $header = "Content-type: text/plain; charset=".$encoding."\n";
+                        $header .= "From: ".$name." <".$email.">\n";
+                        $header .= "MIME-Version: 1.0\n";
+                        $header .= "Content-Transfer-Encoding: 8bit\n";
+                        $header .= "Date: ".date("r (T)")."\n";
+                        mail($to, $subject, $msg, $header);
+                        header('Location: contact.php');
+                    }
+                else
+                    throw new Exception('emptyInputs');
+            }
+        } catch (Exception $e) {
+            $this->errror($e);
         }
-        else
-            throw new Exception('robot');
     }
 
     public function signalComment($id, $postId)

@@ -1,12 +1,11 @@
-<?php $title="Commentaires signalés";
+<?php $title = "Commentaires signalés";
 ob_start();
 ?>
 <section id="signaledComments ">
     <h1 class="m-4 display-4 animated fadeIn slow">Commentaires signalés</h1>
     <?php
-    if ($req->rowCount() > 0) 
-    {
-        while ($comment = $req->fetch()) {
+if ($req->rowCount() > 0) {
+    while ($comment = $req->fetch()) {
         ?>
     <div class="row justify-content-center">
         <div class="commentBox m-4 col-4">
@@ -21,12 +20,11 @@ ob_start();
     </div>
     <?php
     }
-} else { 
-?>
+} else {
+    ?>
     <h2>Aucun commentaire n'a été signalé !</h2>
     <?php
-    }
-
+}
 ?>
 </section>
 

@@ -3,6 +3,7 @@ $title = 'Les chapitres - Panneau d\'administration';
 ob_start();?>
 
 <h1 class="display-4 m-4 animated fadeIn slow">Les Chapitres</h1>
+<!-- Boucle qui réduit l'affichage à 500 caractères max -->
 <?php
 while ($donnees = $req->fetch()) {
     if (strlen($donnees['content']) <= 400)
@@ -15,6 +16,7 @@ while ($donnees = $req->fetch()) {
     }
 ?>
 <hr class="style-seven">
+<!-- Display de l'article -->
 <div class="articleBox">
 <article class="article">
         <h2 class="mb-3 h1"><a href="articleBackend.php?id=<?=$donnees['id']?>"><?=ucfirst(htmlspecialchars($donnees['title']));?></a></h2>
