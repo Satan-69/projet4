@@ -2,6 +2,7 @@
 require_once 'lib/form.php';
 require_once 'model/frontend/UserManager.php';
 require_once 'model/frontend/ArticleManager.php';
+require_once 'model/frontend/CommentManager.php';
 
 class Backend
 {
@@ -80,7 +81,9 @@ class Backend
     private function dashboardView()
     {
         $articleManager = new ArticleManager;
+        $commentManager = new CommentManager;
         $req = $articleManager->getArticles();
+        $comments = $commentManager->countSignaledComments();
         require 'view/backend/dashboard.php';
     }
 
@@ -222,7 +225,7 @@ class Backend
                 {
                     $articleManager = new ArticleManager;
                     $input = $articleManager->postArticle($title, nl2br(strip_tags($textcontent)));
-                    header('Location: dashboard.php');
+                    header('Location: articlesBackend.php');
                 }
                 else
                     throw new Exception('Veuillez renseigner le titre ET le contenu !');
@@ -244,7 +247,7 @@ class Backend
                     {
                         $articleManager = new ArticleManager;
                         $input = $articleManager->updateArticle($title, strip_tags($textcontent), $id);
-                        header('Location: dashboard.php');
+                        header('Location: articlesBackend.php');
                     }
                     else
                         throw new Exception('Veuillez renseigner le titre ET le contenu !');
@@ -270,7 +273,7 @@ class Backend
                     $articleManager->deleteArticle($_GET['id']);
                     $commentManager->deleteComments($_GET['id']);
 
-                    header('Location: dashboard.php');
+                    header('Location: articlesBackend.php');
                 }
                 else if (isset($_POST['update']))
                 {

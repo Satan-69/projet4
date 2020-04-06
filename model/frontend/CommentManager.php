@@ -51,4 +51,12 @@ class CommentManager extends Manager
 
         return $req;
     }
+
+    public function countSignaledComments()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT COUNT(*) as signaled FROM comments WHERE signaled = \'yes\'');
+
+        return $req->fetch();
+    }
 }

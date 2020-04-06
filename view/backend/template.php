@@ -27,37 +27,10 @@
     <header>
         <?php include "header.php"; ?>
     </header>
-    <div class="wrapper">
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <h3 class="my-3"><a href="dashboard.php">Administration</a></h3>
-            </div>
-            <ul class="list-unstyled components">
-                <li>
-                    <ul class="list-unstyled" id="articles-menu">
-                        <li>
-                            <a href="write.php">Nouvel article</a>
-                        </li>
-                    </ul>
-                </li>
-                <br>
-                <li>
-                       
-                    <ul class="list-unstyled" id="comments-menu">
-                        <li>
-                            <a href="signaledComments.php">Commentaires signalés</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
         <main id="content">
             <?=$content?>
-
-
         </main>
-    </div>
-
+  
     <!-- Tiny MCE -->
     <script src="https://cdn.tiny.cloud/1/tqeabnftwl5b4cses0yd6673ns5czxp1uml0rmljgbqqu7s4/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script>

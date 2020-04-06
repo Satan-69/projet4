@@ -4,26 +4,26 @@ ob_start();?>
 <h1 class="display-4 m-4 animated fadeIn slow">Les Chapitres</h1>
 <?php
 while ($donnees = $req->fetch()) {
-    if (strlen($donnees['content']) <= 400)
+    if (strlen($donnees['content']) <= 500)
       $content = $donnees['content'];
     else
     {
-      $debut = substr($donnees['content'], 0, 400);
+      $debut = substr($donnees['content'], 0, 500);
       $debut = substr($debut, 0, strrpos($debut, ' ')) . '...';
       $content = $debut;
     }
 ?>
-<div class="articleBox">
+<hr class="style-seven">  
+<div class="articleBox animated fadeIn slow">
     <article class="article">
-        <h2 class="mb-3"><a href="article.php?id=<?=$donnees['id']?>"><?=htmlspecialchars($donnees['title']);?></a></h2>
-        <p>Publié le <?=htmlspecialchars($donnees['date_posted']);?> , par <?=htmlspecialchars($donnees['author']);?>
-        </p>
-
-        <p class="text-center"><?=nl2br(htmlspecialchars($content));?></p>
-        
+        <h2 class="mb-3 h1"><a href="article.php?id=<?=$donnees['id']?>"><?=ucfirst(htmlspecialchars(ucfirst($donnees['title'])));?></a></h2>
+        <p class="text-center my-4"><?=nl2br(htmlspecialchars($content));?></p>
+        <p class="text-right">Publié le <?=htmlspecialchars($donnees['date_posted']);?>, par <?=htmlspecialchars($donnees['author']);?></p>
+        <?php if($donnees['date_updated']) {
+          echo '<p class="text-right">Mis à jour le ' . htmlspecialchars($donnees['date_updated']) . '</p>';
+        }?>
     </article>
 </div>
-<hr class="hr-shine shine">
 <?php
 }
 $req->closeCursor();

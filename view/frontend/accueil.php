@@ -11,17 +11,20 @@ ob_start();
         <h2 class ="h1 mt-4 animated fadeIn delay-3s slow"><a href="article.php?id=1"> Rendez-vous ici pour commencer l'histoire...</a></h2>
         </div>
 </section>
-<hr class="hr-text m-5" data-content="Dernier article">
+<hr class="hr-text m-5" data-content="Dernier chapitre">
 <section id="last-article">
     <!-- Get the last article published -->
     <article class="article">
-        <h2 class="h1"><a href="article.php?id=<?=$article['id']?>"><?=$article['title'];?></a></h2>
-        <p class="m-3">Publié le <?=$article['date_posted'];?> , par <?=$article['author'];?></p>
+        <h2 class="h1"><a href="article.php?id=<?=$article['id']?>"><?=htmlspecialchars(ucfirst($article['title']));?></a></h2>
+        <p class="m-3">Publié le <?=htmlspecialchars($article['date_posted']);?>, par <?=htmlspecialchars($article['author']);?></p>
+        <?php if($article['date_updated']) {
+          echo '<p>Mis à jour le ' . htmlspecialchars($article['date_updated']) . '</p>';
+        }?>
 
         <p><?=nl2br(htmlspecialchars($article['content']));?></p>
     </article>
 </section>
-<hr class="hr-text m-5" data-content="Mes autres livres">
+<hr class="hr-text m-5" data-content="Mes autres romans">
 <section id="books">
     <div id="cards" class="d-flex flex-column flex-xl-row align-items-center justify-content-around">
         <div class="card">

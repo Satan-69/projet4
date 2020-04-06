@@ -14,17 +14,17 @@ while ($donnees = $req->fetch()) {
       $content = $debut;
     }
 ?>
+<hr class="style-seven">
 <div class="articleBox">
-    <article class="article">
-        <h2 class="mb-3"><a href="articleBackend.php?id=<?=$donnees['id']?>"><?=htmlspecialchars($donnees['title']);?></a></h2>
-        <p>Publié le <?=htmlspecialchars($donnees['date_posted']);?> , par <?=htmlspecialchars($donnees['author']);?>
-        </p>
-
-        <p class="text-center"><?=nl2br(htmlspecialchars($content));?></p>
-        
+<article class="article">
+        <h2 class="mb-3 h1"><a href="articleBackend.php?id=<?=$donnees['id']?>"><?=ucfirst(htmlspecialchars($donnees['title']));?></a></h2>
+        <p class="text-center my-4"><?=nl2br(htmlspecialchars($content));?></p>
+        <p class="text-right">Publié le <?=htmlspecialchars($donnees['date_posted']);?>, par <?=htmlspecialchars($donnees['author']);?></p>
+        <?php if($donnees['date_updated']) {
+          echo '<p class="text-right">Mis à jour le ' . htmlspecialchars($donnees['date_updated']) . '</p>';
+        }?>
     </article>
 </div>
-<hr class="hr-shine shine">
 <?php
 }
 $req->closeCursor();
