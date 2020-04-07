@@ -2,14 +2,16 @@
 $title = htmlspecialchars($article['title']);
 ?>
 <!-- Display de l'article -->
-<article class="article">
-    <h2 class="display-4 m-4"><?=htmlspecialchars(ucfirst($article['title']));?></h2>
-    <p><?=nl2br(htmlspecialchars($article['content']));?></p>
-    <p class="text-right mt-5">Publié le <?=htmlspecialchars($article['date_posted']);?>, par
-        <?=htmlspecialchars($article['author']);?></p>
-    <?php if ($article['date_updated']) {
+<article class="articleBox mx-auto border border-white m-3">
+    <h2 class="display-3 mb-4"><?=htmlspecialchars(ucfirst($article['title']));?></h2>
+    <div class="text-justify">
+        <p><?=nl2br(htmlspecialchars($article['content']));?></p>
+        <p class="text-right mt-5">Publié le <?=htmlspecialchars($article['date_posted']);?>, par
+            <?=htmlspecialchars($article['author']);?></p>
+        <?php if ($article['date_updated']) {
     echo '<p class="text-right">Mis à jour le ' . htmlspecialchars($article['date_updated']) . '</p>';
 }?>
+    </div>
 </article>
 <hr>
 <!-- Display des commentaires -->
@@ -23,19 +25,21 @@ if ($comments->rowCount() > 0) {
             <div>
                 <p><strong><?=htmlspecialchars($comment['author'])?></strong>, le
                     <?=htmlspecialchars($comment['date_posted'])?> : </p>
-                <form method="POST" action="signalComment.php?id=<?=$comment['id']?>&amp;postId=<?=$article['id']?>">
-                    <?php if ($comment['signaled']) {?>
-                    <p class="signaled small text-right">Ce commentaire a été signalé.</p><?php } else {?>
-                    <input class="signalButton" type="submit" value="Signaler"> <?php }?>
-                </form>
             </div>
             <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>
+            <form method="POST" action="signalComment.php?id=<?=$comment['id']?>&amp;postId=<?=$article['id']?>">
+                <?php if ($comment['signaled'] === 'yes') { 
+                            echo '<p class="signaled small text-right">Ce commentaire a été signalé.</p>'; } 
+                            else if($comment['signaled'] === 'ok') {
+                             echo '<p class="signaled small text-right">Ce commentaire a été validé.</p>';} 
+                            else { echo '<input class="signalButton" type="submit" value="Signaler">';}?>
+            </form>
         </div>
         <?php
     }
 } else {?>
         <h4 class="h3">Aucun commentaire</h4>
-<?php
+        <?php
     } ?>
     </div>
     <!-- Poster un commentaire -->

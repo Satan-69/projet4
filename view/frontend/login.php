@@ -27,8 +27,8 @@
         <p class="h3 m-4">Entrez vos identifiants : </p>
 
         <form action="dashboard.php" method="post">
-            <p><label for="name">Votre nom : <br><?=$form->input('name');?></label><br></p>
-            <p><label for="password">Votre mot de passe : <br><?=$form->password();?></label><br></p>
+            <p><label for="name">Votre nom : <br><?=$form->input('name', 'name');?></label><br></p>
+            <p><label for="password">Votre mot de passe : <br><?=$form->password('password');?></label><br></p>
             <p><input type="submit" class="m-4" value="Se connecter"></p>
             <input type="hidden" name="recaptcha" id="recaptcha">
         </form>

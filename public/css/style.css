@@ -159,12 +159,16 @@ hr.style-seven:before {
 }
 
 .articleBox {
-    width: 60%;
+    max-width: 900px;
     margin: 0 auto;
     border-radius: 10px;
     box-shadow: 3px 3px 5px black;
     padding: 20px;
     background-color: white;
+}
+
+.articleBox h2 {
+    color: rgb(78, 94, 114);
 }
 
 .box {
@@ -219,6 +223,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     color: white;
 }
 
+
 /* COMMENTS DISPOSITION ON ARTICLE PAGE */
 
 .commentBox {
@@ -255,13 +260,25 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     #header-text {
         position: relative;
     }
+
     #header-text .lead {
         margin-top: 0;
     }
+
     #anchorBooks {
         height: 70px;  
     }
+
     #contactForm {
+        width: 90%;
+    }
+
+    .signalButton {
+     position: relative;
+     margin-top: 10px;
+    }
+
+    .articleBox {
         width: 90%;
     }
 }

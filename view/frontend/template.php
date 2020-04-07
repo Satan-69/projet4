@@ -1,3 +1,4 @@
+<?php ob_start();?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -37,3 +38,4 @@
     </script>
 </body>
 </html>
+<?php ob_get_contents();

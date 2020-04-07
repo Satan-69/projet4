@@ -121,7 +121,6 @@ class Frontend
                 $commentManager = new CommentManager;    
                 $input = $commentManager->postComment($postId, $author, $comment);
                 header('Location: article.php?id='.$postId);
-                exit();
             }
             else
                 throw new Exception('emptyInputs');

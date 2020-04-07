@@ -2,7 +2,7 @@
 ob_start();
 ?>
 
-<h1>Update</h1>
+<h1>Mise à jour</h1>
 
 <div class="d-flex justify-content-center mt-4">
     <form action="update.php?id=<?=$article['id']?>" method="post">

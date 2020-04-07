@@ -47,7 +47,10 @@ class CommentManager extends Manager
     public function getSignaledComments()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, author, comment, DATE_FORMAT(date_posted, \'%d/%m/%Y, %Hh%i\') as date_posted, DATE_FORMAT(date_signaled, \'%d/%m/%Y, %Hh%i\') as date_signaled FROM comments WHERE signaled = \'yes\' ORDER BY date_signaled DESC');
+        $req = $db->prepare('SELECT id, author, comment, DATE_FORMAT(date_posted, \'%d/%m/%Y, %Hh%i\') as date_posted, DATE_FORMAT(date_signaled, \'%d/%m/%Y, %Hh%i\') as date_signaled FROM comments WHERE signaled = :signaled ORDER BY date_signaled DESC');
+        $req->execute(array(
+            'signaled' => 'yes'
+        ));
 
         return $req;
     }
@@ -55,8 +58,30 @@ class CommentManager extends Manager
     public function countSignaledComments()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT COUNT(*) as signaled FROM comments WHERE signaled = \'yes\'');
+        $req = $db->prepare('SELECT COUNT(*) as signaled FROM comments WHERE signaled = :signaled');
+        $req->execute(array(
+            'signaled' => 'yes'
+        ));
 
         return $req->fetch();
+    }
+
+    public function deleteSignaledComments()
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM comments WHERE signaled = :signaled');
+        $req->execute(array(
+            'signaled' => 'yes'
+        ));
+    }
+
+    public function moderateSignaledComment($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('UPDATE comments SET signaled = :signaled WHERE id = :id');
+        $req->execute(array(
+            'signaled' => 'ok',
+            'id' => $id
+        ));
     }
 }

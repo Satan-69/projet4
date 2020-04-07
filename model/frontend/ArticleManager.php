@@ -25,7 +25,7 @@ class ArticleManager extends Manager
     public function getLastArticle()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT author, title, content, id, DATE_FORMAT(date_posted, \'%d/%m/%Y, %Hh%i\') AS date_posted, DATE_FORMAT(date_updated, \'%d/%m/%Y\') AS date_updated FROM articles ORDER BY id DESC LIMIT 1');
+        $req = $db->query('SELECT author, title, content, id, DATE_FORMAT(date_posted, \'%d/%m/%Y\') AS date_posted, DATE_FORMAT(date_updated, \'%d/%m/%Y\') AS date_updated FROM articles ORDER BY id DESC LIMIT 1');
         $article = $req->fetch();
 
         return $article;

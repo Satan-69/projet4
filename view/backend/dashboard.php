@@ -13,8 +13,9 @@ ob_start();?>
     <div class="box adminBox">
         <h3 class="h1">Commentaires</h3>
         <ul class="list-unstyled mt-3">
-            <li><a <?php if ($comments['signaled'] > 0) {echo 'class="red"';}?> href="signaledComments.php">Commentaires
-                    signalés</a></li>
+            <li><?php if ($comments['signaled'] > 0) {echo '<a class="red" href="signaledComments.php">Commentaires signalés <span class="small arial">('.$comments['signaled'].')</span></a>';} 
+            else { echo '<a href="signaledComments.php">Commentaires signalés</a>';}?>
+            </li>
         </ul>
     </div>
 </div>

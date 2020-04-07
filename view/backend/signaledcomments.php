@@ -4,8 +4,9 @@ ob_start();
 <section id="signaledComments ">
     <h1 class="m-4 display-4 animated fadeIn slow">Commentaires signalés</h1>
     <?php
-if ($req->rowCount() > 0) {
-    while ($comment = $req->fetch()) {
+if ($req->rowCount() > 0) { ?>
+                  <a id="deleteSignaledCommentsButton" href="deleteSignaledComments.php">Tout Supprimer</a>
+    <?php  while ($comment = $req->fetch()) {
         ?>
     <div class="row justify-content-center">
         <div class="commentBox m-4 col-4">
@@ -13,6 +14,9 @@ if ($req->rowCount() > 0) {
                 <p><strong><?=htmlspecialchars($comment['author'])?></strong>, le <?=$comment['date_posted']?> : </p>
                 <form method="POST" action="deleteComment.php?id=<?=$comment['id']?>">
                     <input name="signaledComments" class="signalButton deleteButton" type="submit" value="Supprimer">
+                </form>
+                <form method="POST" action="moderateComment.php?id=<?=$comment['id']?>">
+                    <input id="moderateButton" name="signaledComments" class="signalButton" type="submit" value="Valider">
                 </form>
             </div>
             <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>

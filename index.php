@@ -65,6 +65,12 @@ try {
         else if (strpos($backend->url, 'deleteComment.php'))
             $backend->deleteComment($_GET['id']);
 
+        else if (strpos($backend->url, 'moderateComment.php'))
+            $backend->moderateComment($_GET['id']);
+        
+        else if (strpos($backend->url, 'deleteSignaledComments.php'))
+            $backend->deleteSignaledComments();
+
         else if (strpos($backend->url, 'write.php'))
             $backend->write();
 

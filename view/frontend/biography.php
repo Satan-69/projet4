@@ -30,40 +30,50 @@ ob_start();
     <li class="booktypes">
         <h5>Pièces de théâtre</h5>
     </li>
-    <ul>
-        <li> 1988 : L'amour des trois capitaines</li>
-        <li> 1990 : Une vie de comédien</li>
-        <li> 1992 : L'école buissonnière</li>
-    </ul>
+    <li>
+        <ul>
+            <li> 1988 : L'amour des trois capitaines</li>
+            <li> 1990 : Une vie de comédien</li>
+            <li> 1992 : L'école buissonnière</li>
+        </ul>
+    </li>
     <li class="booktypes">
         <h5>Nouvelles</h5>
     </li>
-    <ul>
-        <li>2010 : Les nouvelles de Jean</li>
-    </ul>
+    <li>
+        <ul>
+            <li>2010 : Les nouvelles de Jean</li>
+        </ul>
+    </li>
     <li class="booktypes">
         <h5>Bandes dessinées</h5>
     </li>
-    <ul>
-        <li>2015 : Les invisibles, avec Julie Forteroche</li>
-    </ul>
+    <li>
+        <ul>
+            <li>2015 : Les invisibles, avec Julie Forteroche</li>
+        </ul>
+    </li>
     <li class="booktypes">
         <h5>Romans</h5>
     </li>
-    <ul>
-        <li>2013 : Les Routes d'Amato</li>
-        <li>2015 : Alice sur le Fil, récompensé par le prix des lecteurs de "Elle"</li>
-        <li>2017 : Les Rêves Rouges</li>
-        <li>2018 : Le Palais de la Lune, récompensé par le prix Maison de la Presse</li>
-        <li>2020 : Billet simple pour l'Alaska</li>
-    </ul>
+    <li>
+        <ul>
+            <li>2013 : Les Routes d'Amato</li>
+            <li>2015 : Alice sur le Fil, récompensé par le prix des lecteurs de "Elle"</li>
+            <li>2017 : Les Rêves Rouges</li>
+            <li>2018 : Le Palais de la Lune, récompensé par le prix Maison de la Presse</li>
+            <li>2020 : Billet simple pour l'Alaska</li>
+        </ul>
+    </li>
     <li class="booktypes">
         <h5>Documentaires</h5>
     </li>
-    <ul>
-        <li>2005 : Ireki - ville oubliée, en collaboration avec Suzanne Bauer</li>
-        <li>2008 : Japon - Terre et Mer, en collaboration avec Suzanne Bauer</li>
-    </ul>
+    <li>
+        <ul>
+            <li>2005 : Ireki - ville oubliée, en collaboration avec Suzanne Bauer</li>
+            <li>2008 : Japon - Terre et Mer, en collaboration avec Suzanne Bauer</li>
+        </ul>
+    </li>
 </ul>
 <hr class="hr-text mt-5">
 

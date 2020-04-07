@@ -204,12 +204,45 @@ class Backend
     {
         if (isset($this->url))
         {
+            if ($this->checkingCookies())
+            {
             $commentManager = new CommentManager;
             $commentManager->deleteComment($id);
             if (isset($_POST['articleBackend']))
                 header('Location: articleBackend.php?id='.$_GET['postId']);
             else if (isset($_POST['signaledComments']))
                 header('Location: signaledComments.php');
+            }
+        }
+    }
+
+    public function deleteSignaledComments()
+    {
+        if (isset($this->url))
+        {
+            if ($this->checkingCookies())
+            {
+                $commentManager = new CommentManager;
+                $commentManager->deleteSignaledComments();
+
+                header('Location: dashboard.php');
+            }
+        }
+    }
+
+    public function moderateComment($id)
+    {
+        if (isset($this->url))
+        {
+            if ($this->checkingCookies())
+            {
+            $commentManager = new CommentManager;
+            $commentManager->moderateSignaledComment($id);
+            if (isset($_POST['articleBackend']))
+                header('Location: articleBackend.php?id='.$_GET['postId']);
+            else if (isset($_POST['signaledComments']))
+                header('Location: signaledComments.php');
+            }
         }
     }
 

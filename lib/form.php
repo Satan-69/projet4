@@ -2,14 +2,14 @@
 
 class Form
 {
-    public function input($name)
+    public function input($name, $id)
     {
-        return '<input autofocus type="text" name="' . $name . '">';
+        return '<input autofocus type="text" name="' . $name . '" id="' . $id . '">';
     }
 
-    public function password()
+    public function password($id)
     {
-        return '<input type="password" name="password">';
+        return '<input type="password" id="'.$id.'" name="password">';
     }
 
     public function textArea($name)

@@ -28,10 +28,10 @@ ob_start();
         <h2 class="h1"><a
                 href="article.php?id=<?=$article['id']?>"><?=htmlspecialchars(ucfirst($article['title']));?></a></h2>
         <p class="m-3">Publié le <?=htmlspecialchars($article['date_posted']);?>, par
-            <?=htmlspecialchars($article['author']);?></p>
+            <?=htmlspecialchars($article['author']);?>.
         <?php if($article['date_updated']) {
-          echo '<p>Mis à jour le ' . htmlspecialchars($article['date_updated']) . '</p>';
-        }?>
+          echo 'Mis à jour le ' . htmlspecialchars($article['date_updated']);
+        }?></p>
 
         <p><?=nl2br(htmlspecialchars($content));?></p>
     </article>

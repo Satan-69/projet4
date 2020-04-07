@@ -9,7 +9,7 @@ ob_start();
         <p><label class=" mt-3 h3" for="title"><u>Titre du chapitre</u> :</label></p>
         <p><input type="text" name="title" class="titleinput" required></p>
         <p class=" m-4 h3"><u>Votre texte</u> : </p>
-        <textarea name="textcontent" required></textarea>
+        <textarea name="textcontent" required>Écrivez votre récit ici.</textarea>
         <input type="submit" value="Publier" class="btn btn-info mt-3 px-5">
     </form>
 </div>
