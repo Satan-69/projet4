@@ -103,6 +103,7 @@ class Backend
         $articleManager = new ArticleManager;
         $commentManager = new CommentManager;
         $req = $articleManager->getArticles();
+        $nbArticles = $articleManager->countArticles();
         $comments = $commentManager->countSignaledComments();
         require 'view/backend/dashboard.php';
     }

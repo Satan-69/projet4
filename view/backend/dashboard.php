@@ -7,7 +7,7 @@ ob_start();?>
         <h3 class="h1">Articles</h3>
         <ul class="list-unstyled mt-3">
             <li><a href="write.php">Nouveau chapitre</a></li>
-            <li><a href="articlesBackend.php">Liste des chapitres</a></li>
+            <li><a href="articlesBackend.php">Liste des chapitres <?= '<span class="small arial">('.$nbArticles['nb'].')</span>'?></a></li>
         </ul>
     </div>
     <div class="box adminBox">

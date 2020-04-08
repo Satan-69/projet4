@@ -57,4 +57,13 @@ class ArticleManager extends Manager
             'id' => $id,
         ));
     }
+
+    public function countArticles()
+    {
+        $db = $this->dbConnect();
+        $req= $db->query('SELECT COUNT(*) AS nb FROM articles');
+
+        return $req->fetch();
+        
+    }
 }
