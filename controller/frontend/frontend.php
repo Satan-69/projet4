@@ -1,8 +1,8 @@
 <?php
-require_once 'model/frontend/Manager.php';
-require_once 'model/frontend/ArticleManager.php';
-require_once 'model/frontend/CommentManager.php';
-require_once 'model/frontend/UserManager.php';
+require_once 'model/Manager.php';
+require_once 'model/ArticleManager.php';
+require_once 'model/CommentManager.php';
+require_once 'model/UserManager.php';
 require_once 'lib/form.php';
 
 class Frontend
@@ -120,7 +120,7 @@ class Frontend
             {
                 $commentManager = new CommentManager;    
                 $input = $commentManager->postComment($postId, $author, $comment);
-                header('Location: article.php?id='.$postId);
+                header('Location: article.php?id='.$postId.'#comments');
             }
             else
                 throw new Exception('emptyInputs');
@@ -187,7 +187,7 @@ class Frontend
     {
         $commentManager = new CommentManager;
         $commentManager->signal($id);
-        header('Location: article.php?id='.$postId);    
+        header('Location: article.php?id='.$postId.'#comments');    
     }
 }
 

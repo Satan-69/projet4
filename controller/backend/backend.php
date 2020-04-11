@@ -1,8 +1,8 @@
 <?php
 require_once 'lib/form.php';
-require_once 'model/frontend/UserManager.php';
-require_once 'model/frontend/ArticleManager.php';
-require_once 'model/frontend/CommentManager.php';
+require_once 'model/UserManager.php';
+require_once 'model/ArticleManager.php';
+require_once 'model/CommentManager.php';
 
 class Backend
 {
