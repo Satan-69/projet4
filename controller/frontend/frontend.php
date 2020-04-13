@@ -170,8 +170,6 @@ class Frontend
                         $header = "Content-type: text/plain; charset=".$encoding."\n";
                         $header .= "From: ".$name." <".$email.">\n";
                         $header .= "MIME-Version: 1.0\n";
-                        $header .= "Content-Transfer-Encoding: 8bit\n";
-                        $header .= "Date: ".date("r (T)")."\n";
                         mail($to, $subject, $msg, $header);
                         header('Location: contact.php');
                     }
@@ -190,4 +188,3 @@ class Frontend
         header('Location: article.php?id='.$postId.'#comments');    
     }
 }
-

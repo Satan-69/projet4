@@ -29,9 +29,9 @@ if ($comments->rowCount() > 0) {
             <p><?=nl2br(htmlspecialchars($comment['comment']))?></p>
             <form method="POST" action="signalComment.php?id=<?=$comment['id']?>&amp;postId=<?=$article['id']?>">
                 <?php if ($comment['signaled'] === 'yes') { 
-                            echo '<p class="signaled small text-right">Ce commentaire a été signalé.</p>'; } 
+                            echo '<p class="signaled small text-left text-lg-right">Ce commentaire a été signalé.</p>'; } 
                             else if($comment['signaled'] === 'ok') {
-                             echo '<p class="signaled small text-right">Ce commentaire a été validé.</p>';} 
+                             echo '<p class="signaled small text-left text-lg-right">Ce commentaire a été validé.</p>';} 
                             else { echo '<input class="signalButton" type="submit" value="Signaler">';}?>
             </form>
         </div>

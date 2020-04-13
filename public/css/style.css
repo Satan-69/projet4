@@ -94,6 +94,13 @@ p a:hover {    /* works for links in biography too */
     font-weight: bold;
 }
 
+#header-text a {
+    transition: 0.3s;
+}
+#header-text a:hover {
+    color: #66c2d9;
+}
+
 /*    HR    */
 
 .hr-text {
@@ -254,15 +261,29 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     height: 456px;
 }
 
+#sitemapBlank {
+    height: 409px;
+}
 /* MEDIA QUERIES */
+
+@media all and (max-width: 1024px) {
+
+    #header-text .lead {
+        margin-top: 0;
+    }
+}
 
 @media all and (max-width: 992px) {
     #header-text {
         position: relative;
     }
 
-    #header-text .lead {
-        margin-top: 0;
+    #header-text a {
+        text-decoration: underline;
+    }
+
+    #header-text a:hover {
+        color: white;
     }
 
     #anchorBooks {
@@ -273,7 +294,7 @@ input[type="submit"]:hover, input[type="submit"]:focus {
         width: 90%;
     }
 
-    .signalButton {
+    .signalButton, .signaled {
      position: relative;
      margin-top: 10px;
     }
