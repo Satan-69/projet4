@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Le nouveau roman de Jean Forteroche, Billet simple pour l'Alaska, publié directement en ligne chapitre par chapitre.">
+    <meta name="description" content="gi Le nouveau roman de Jean Forteroche, Billet simple pour l'Alaska, publié directement en ligne chapitre par chapitre.">
     <title>Jean Forteroche - <?= $title?></title>
     <link rel="icon" type="image/png" href="public/images/logoJF.png" />
     <!-- CSS Bootstrap -->

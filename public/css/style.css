@@ -11,8 +11,10 @@ body {
     background-color: #697D82;
     height: 100vh;
     text-align: center;
-    padding-top: 95px;    /* Height of the navbar */
-    padding-bottom: 60px;    /* Height of the footer */
+    padding-top: 95px;
+    /* Height of the navbar */
+    padding-bottom: 60px;
+    /* Height of the footer */
 }
 
 main {
@@ -84,7 +86,8 @@ header .navbar-brand img {
     width: 90%;
 }
 
-p a:hover {    /* works for links in biography too */
+p a:hover {
+    /* works for links in biography too */
     color: white;
 }
 
@@ -97,6 +100,7 @@ p a:hover {    /* works for links in biography too */
 #header-text a {
     transition: 0.3s;
 }
+
 #header-text a:hover {
     color: #66c2d9;
 }
@@ -230,7 +234,6 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     color: white;
 }
 
-
 /* COMMENTS DISPOSITION ON ARTICLE PAGE */
 
 .commentBox {
@@ -264,10 +267,10 @@ input[type="submit"]:hover, input[type="submit"]:focus {
 #sitemapBlank {
     height: 409px;
 }
+
 /* MEDIA QUERIES */
 
 @media all and (max-width: 1024px) {
-
     #header-text .lead {
         margin-top: 0;
     }
@@ -277,28 +280,22 @@ input[type="submit"]:hover, input[type="submit"]:focus {
     #header-text {
         position: relative;
     }
-
     #header-text a {
         text-decoration: underline;
     }
-
     #header-text a:hover {
         color: white;
     }
-
     #anchorBooks {
-        height: 70px;  
+        height: 70px;
     }
-
     #contactForm {
         width: 90%;
     }
-
     .signalButton, .signaled {
-     position: relative;
-     margin-top: 10px;
+        position: relative;
+        margin-top: 10px;
     }
-
     .articleBox {
         width: 90%;
     }
