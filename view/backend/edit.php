@@ -1,8 +1,8 @@
-<?php $title = "Nouvel article";
+<?php $title = "Mise à jour";
 ob_start();
 ?>
 
-<h1>Mise à jour</h1>
+<h1 class="display-4 m-4 animated fadeIn slow">Mise à jour</h1>
 
 <div class="d-flex justify-content-center mt-4">
     <form action="update.php?id=<?=$article['id']?>" method="post">

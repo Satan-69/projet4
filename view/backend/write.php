@@ -2,7 +2,7 @@
 ob_start();
 ?>
 
-<h1>Écrire un nouveau chapitre</h1>
+<h1 class="display-4 m-4 animated fadeIn slow">Écrire un nouveau chapitre</h1>
 
 <div class="d-flex justify-content-center mt-4">
     <form action="newArticle.php" method="post">
